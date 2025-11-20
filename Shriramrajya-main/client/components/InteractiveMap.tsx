@@ -286,42 +286,42 @@ export function InteractiveMap({
 
       {/* Info Panels */}
       {selectedMarker && (
-        <Card className="border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50">
-          <div className="p-4 space-y-3">
+        <Card className="border-3 border-amber-300 bg-gradient-to-br from-white via-amber-50 to-orange-50 shadow-2xl">
+          <div className="p-6 space-y-5">
             <div className="flex items-start justify-between">
-              <div>
-                <h3 className="font-bold text-amber-950 text-lg">
+              <div className="flex-1">
+                <h3 className="font-playfair font-bold text-amber-950 text-2xl mb-2">
                   {selectedMarker.name}
                 </h3>
-                <p className="text-sm text-amber-800">
-                  {selectedMarker.state}, {selectedMarker.country}
+                <p className="text-base font-semibold text-amber-800 mb-2">
+                  📍 {selectedMarker.state}, {selectedMarker.country}
                 </p>
-                <p className="text-xs text-amber-700 mt-1">
-                  <span className="font-semibold">{selectedMarker.phase}</span>
-                </p>
+                <div className="inline-block px-3 py-1 bg-gradient-to-r from-amber-700 to-orange-700 text-white rounded-full text-xs font-bold">
+                  {selectedMarker.phase}
+                </div>
               </div>
               <button
                 onClick={() => setSelectedMarker(null)}
-                className="p-1 hover:bg-amber-200 rounded"
+                className="p-2 hover:bg-amber-200 rounded-full transition-all"
               >
-                <X className="w-5 h-5 text-amber-900" />
+                <X className="w-6 h-6 text-amber-900" />
               </button>
             </div>
 
-            <p className="text-sm text-amber-900 line-clamp-2">
+            <p className="text-base font-medium text-amber-900 leading-relaxed">
               {selectedMarker.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-2 bg-white rounded border border-amber-200">
-                <p className="text-amber-700 font-semibold">Best Time</p>
-                <p className="text-amber-900">
+            <div className="grid grid-cols-2 gap-3 text-sm">
+              <div className="p-3 bg-gradient-to-br from-white to-amber-100 rounded-lg border-2 border-amber-300 shadow-md">
+                <p className="text-amber-700 font-bold text-xs mb-1">🗓️ BEST TIME</p>
+                <p className="text-amber-900 font-semibold">
                   {selectedMarker.bestTimeToVisit}
                 </p>
               </div>
-              <div className="p-2 bg-white rounded border border-amber-200">
-                <p className="text-amber-700 font-semibold">Nearest City</p>
-                <p className="text-amber-900">{selectedMarker.nearestCity}</p>
+              <div className="p-3 bg-gradient-to-br from-white to-orange-100 rounded-lg border-2 border-orange-300 shadow-md">
+                <p className="text-orange-700 font-bold text-xs mb-1">🏙️ NEAREST CITY</p>
+                <p className="text-amber-900 font-semibold">{selectedMarker.nearestCity}</p>
               </div>
             </div>
 
@@ -329,8 +329,8 @@ export function InteractiveMap({
               to={`/location/${selectedMarker.id}`}
               className="inline-block w-full"
             >
-              <button className="w-full px-4 py-2 bg-amber-700 hover:bg-amber-800 text-white rounded-lg text-sm font-semibold transition">
-                View Details
+              <button className="w-full px-6 py-3 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-800 hover:to-orange-800 text-white rounded-xl text-base font-bold transition-all transform hover:scale-105 shadow-lg">
+                View Complete Details →
               </button>
             </Link>
           </div>
