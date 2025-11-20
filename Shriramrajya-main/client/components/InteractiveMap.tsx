@@ -83,6 +83,27 @@ export function InteractiveMap({
       }
     });
 
+    // Define the correct journey order (50 locations)
+    const journeyOrder = [
+      "ayodhya-birth", "sarayu-river", "vashistha-ashram", "janakpur", "sita-kund",
+      "palace-gate", "tamasa-river", "shringaverpur", "bharadwaj-ashram", "prayagraj",
+      "chitrakoot", "mandakini-river", "atri-ashram", "bharat-milap", "hanuman-dhara",
+      "dandakaranya", "panchavati", "godavari-river", "tapovan", "sita-haran-spot",
+      "kabatkund", "pampa-sarovar", "kishkindha", "anjanadri-hill", "rishyamukha-parvat",
+      "matanga-hill", "sampati-parvat", "kabandha-moksha", "mahendragiri-hill", "trikuta-parvat",
+      "ashok-vatika", "ravana-palace", "nikumbhila", "dhanushkodi", "ram-setu",
+      "rameswaram", "lepakshi", "srirangam", "nashik", "ayodhya-coronation",
+      "nandigram", "guptar-ghat", "valmiki-ashram", "sitamarhi", "ram-mandir"
+    ];
+
+    // Create a map of location ID to full location object
+    const locationMap = new Map(locations.map(loc => [loc.id, loc]));
+
+    // Reorder locations according to journey order
+    const orderedLocations = journeyOrder
+      .map(id => locationMap.get(id))
+      .filter(loc => loc !== undefined) as Location[];
+
     // Color by phase
     const phaseColors: Record<string, string> = {
       "Birth & Early Life": "#dc2626",
@@ -96,32 +117,33 @@ export function InteractiveMap({
     // Add markers and create polyline
     const coordinates: [number, number][] = [];
 
-    locations.forEach((location, index) => {
+    orderedLocations.forEach((location, index) => {
+      if (!location) return;
       coordinates.push([location.latitude, location.longitude]);
 
       const color = phaseColors[location.phase] || "#8b5a2b";
       const isStart = index === 0;
-      const isEnd = index === locations.length - 1;
+      const isEnd = index === orderedLocations.length - 1;
 
       let html = "";
 
       if (isStart) {
         html = `
-          <div style="background-color: #16a34a; color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 16px; border: 3px solid white; box-shadow: 0 2px 12px rgba(0,0,0,0.4); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <div style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.6), inset 0 1px 2px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; position: relative;">
             🚩
-            <div style="position: absolute; top: -8px; right: -8px; background: #15803d; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white;">START</div>
+            <div style="position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(22, 163, 74, 0.3); animation: pulse 2s infinite;"></div>
           </div>
         `;
       } else if (isEnd) {
         html = `
-          <div style="background-color: #dc2626; color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 16px; border: 3px solid white; box-shadow: 0 2px 12px rgba(0,0,0,0.4); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px rgba(220, 38, 38, 0.6), inset 0 1px 2px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; position: relative;">
             ✓
-            <div style="position: absolute; top: -8px; right: -8px; background: #b91c1c; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white;">END</div>
+            <div style="position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(220, 38, 38, 0.3); animation: pulse 2s infinite;"></div>
           </div>
         `;
       } else {
         html = `
-          <div style="background-color: ${color}; color: white; padding: 0; border-radius: 50%; font-weight: bold; font-size: 14px; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+          <div style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); color: white; padding: 0; border-radius: 50%; font-weight: bold; font-size: 13px; border: 3px solid white; box-shadow: 0 3px 12px ${color}80; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif;">
             ${index + 1}
           </div>
         `;
@@ -130,7 +152,7 @@ export function InteractiveMap({
       const marker = L.marker([location.latitude, location.longitude], {
         icon: L.divIcon({
           html,
-          iconSize: isStart || isEnd ? [44, 44] : [40, 40],
+          iconSize: isStart || isEnd ? [48, 48] : [38, 38],
           className: "custom-marker",
         }),
       }).addTo(map.current);
@@ -141,27 +163,39 @@ export function InteractiveMap({
         onLocationSelect?.(location);
       });
 
-      // Tooltip on hover
-      marker.bindTooltip(location.name, { permanent: false, direction: "top" });
+      // Tooltip on hover with location number
+      const tooltipText = isStart ? "🚩 START: Ayodhya" : isEnd ? "✓ END: Return to Ayodhya" : `${index + 1}. ${location.name}`;
+      marker.bindTooltip(tooltipText, { permanent: false, direction: "top", className: "journey-tooltip" });
     });
 
-    // Draw line connecting all locations - thicker and more visible
+    // Draw the journey line - main route
     if (coordinates.length > 0) {
+      // Shadow/glow layer
       L.polyline(coordinates, {
-        color: "#b45309",
-        weight: 4,
-        opacity: 0.8,
+        color: "#fbbf24",
+        weight: 8,
+        opacity: 0.3,
         lineCap: "round",
         lineJoin: "round",
       }).addTo(map.current);
 
-      // Add a subtle shadow effect with a thicker lighter line underneath
+      // Main route line
       L.polyline(coordinates, {
-        color: "#f5deb3",
-        weight: 6,
-        opacity: 0.4,
+        color: "#d97706",
+        weight: 4,
+        opacity: 0.85,
         lineCap: "round",
         lineJoin: "round",
+      }).addTo(map.current);
+
+      // Highlight line
+      L.polyline(coordinates, {
+        color: "#f59e0b",
+        weight: 2,
+        opacity: 0.6,
+        lineCap: "round",
+        lineJoin: "round",
+        dashArray: "10, 5",
       }).addTo(map.current);
     }
   };
