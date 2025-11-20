@@ -14,7 +14,7 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 bg-gradient-to-br from-amber-700 to-amber-900 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-              🏰
+              🏛️
             </div>
             <span className="font-playfair font-bold text-xl text-amber-900 hidden sm:inline">
               Bhagwan Shri Ram Journey
