@@ -59,39 +59,40 @@ export default function MapPage() {
         </div>
 
         {/* Search & Filters Section */}
-        <div className="mb-8 space-y-4 bg-white rounded-2xl p-6 shadow-md border border-amber-100">
+        <div className="mb-8 space-y-6 bg-gradient-to-br from-white to-amber-50 rounded-3xl p-8 shadow-lg border border-amber-100">
           {/* Search Bar */}
           <div>
-            <label className="block text-sm font-semibold text-amber-950 mb-3">
-              🔍 Search Locations
+            <label className="block text-sm font-bold text-amber-950 mb-4 flex items-center gap-2">
+              <Search className="w-5 h-5 text-amber-700" />
+              Search Sacred Locations
             </label>
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-700 w-5 h-5" />
               <Input
                 placeholder="Search by location name or state (e.g., Ayodhya, Varanasi)..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 py-3 border-2 border-amber-300 focus-visible:ring-amber-700 text-lg"
+                className="w-full pl-4 py-4 border-2 border-amber-300 focus:border-amber-700 rounded-xl text-base font-medium transition-all"
               />
+              <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-amber-400 w-5 h-5 opacity-50" />
             </div>
           </div>
 
           {/* Phase Filter */}
           <div>
-            <label className="block text-sm font-semibold text-amber-950 mb-3 flex items-center gap-2">
-              <Filter className="w-4 h-4" />
+            <label className="block text-sm font-bold text-amber-950 mb-4 flex items-center gap-2">
+              <Filter className="w-5 h-5 text-amber-700" />
               Filter by Journey Phase
             </label>
-            <div className="flex gap-2 flex-wrap">
+            <div className="flex gap-3 flex-wrap">
               <button
                 onClick={() => setSelectedPhase("all")}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+                className={`px-5 py-3 rounded-full text-sm font-bold transition-all transform ${
                   selectedPhase === "all"
-                    ? "bg-amber-700 text-white shadow-md"
-                    : "bg-amber-50 text-amber-900 border-2 border-amber-200 hover:bg-amber-100"
+                    ? "bg-gradient-to-r from-amber-700 to-amber-800 text-white shadow-lg scale-105"
+                    : "bg-white text-amber-900 border-2 border-amber-300 hover:bg-amber-100 hover:scale-105"
                 }`}
               >
-                All Phases ({ramLocations.length})
+                All ({ramLocations.length})
               </button>
               {phases.map((phase) => {
                 const count = ramLocations.filter(
@@ -101,10 +102,10 @@ export default function MapPage() {
                   <button
                     key={phase}
                     onClick={() => setSelectedPhase(phase)}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition whitespace-nowrap ${
+                    className={`px-5 py-3 rounded-full text-sm font-bold transition-all transform whitespace-nowrap ${
                       selectedPhase === phase
-                        ? "bg-amber-700 text-white shadow-md"
-                        : "bg-amber-50 text-amber-900 border-2 border-amber-200 hover:bg-amber-100"
+                        ? "bg-gradient-to-r from-amber-700 to-amber-800 text-white shadow-lg scale-105"
+                        : "bg-white text-amber-900 border-2 border-amber-200 hover:bg-amber-100 hover:scale-105"
                     }`}
                   >
                     {phase.split(" ")[0]} ({count})
