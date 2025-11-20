@@ -37,7 +37,7 @@ export function InteractiveMap({
     const script = document.createElement("script");
     script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
     script.onload = () => {
-      initMap();
+      initializeMap();
     };
     document.body.appendChild(script);
 
@@ -47,7 +47,13 @@ export function InteractiveMap({
     };
   }, []);
 
-  const initMap = () => {
+  useEffect(() => {
+    if (map.current && mapReady) {
+      updateMapMarkers();
+    }
+  }, [locations]);
+
+  const initializeMap = () => {
     if (!mapContainer.current || map.current) return;
 
     const L = window.L;
@@ -63,6 +69,19 @@ export function InteractiveMap({
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
     }).addTo(map.current);
+
+    setMapReady(true);
+  };
+
+  const updateMapMarkers = () => {
+    const L = window.L;
+
+    // Remove all layers except tile layer
+    map.current.eachLayer((layer: any) => {
+      if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+        map.current.removeLayer(layer);
+      }
+    });
 
     // Color by phase
     const phaseColors: Record<string, string> = {
@@ -114,8 +133,6 @@ export function InteractiveMap({
         dashArray: "5, 5",
       }).addTo(map.current);
     }
-
-    setMapReady(true);
   };
 
   return (
