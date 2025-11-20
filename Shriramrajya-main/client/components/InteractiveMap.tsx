@@ -96,20 +96,41 @@ export function InteractiveMap({
     // Add markers and create polyline
     const coordinates: [number, number][] = [];
 
-    locations.forEach((location) => {
+    locations.forEach((location, index) => {
       coordinates.push([location.latitude, location.longitude]);
 
       const color = phaseColors[location.phase] || "#8b5a2b";
-      const html = `
-        <div style="background-color: ${color}; color: white; padding: 8px 12px; border-radius: 20px; font-weight: bold; font-size: 20px; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-          📍
-        </div>
-      `;
+      const isStart = index === 0;
+      const isEnd = index === locations.length - 1;
+
+      let html = "";
+
+      if (isStart) {
+        html = `
+          <div style="background-color: #16a34a; color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 16px; border: 3px solid white; box-shadow: 0 2px 12px rgba(0,0,0,0.4); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: relative;">
+            🚩
+            <div style="position: absolute; top: -8px; right: -8px; background: #15803d; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white;">START</div>
+          </div>
+        `;
+      } else if (isEnd) {
+        html = `
+          <div style="background-color: #dc2626; color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 16px; border: 3px solid white; box-shadow: 0 2px 12px rgba(0,0,0,0.4); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: relative;">
+            ✓
+            <div style="position: absolute; top: -8px; right: -8px; background: #b91c1c; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white;">END</div>
+          </div>
+        `;
+      } else {
+        html = `
+          <div style="background-color: ${color}; color: white; padding: 0; border-radius: 50%; font-weight: bold; font-size: 14px; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+            ${index + 1}
+          </div>
+        `;
+      }
 
       const marker = L.marker([location.latitude, location.longitude], {
         icon: L.divIcon({
           html,
-          iconSize: [36, 36],
+          iconSize: isStart || isEnd ? [44, 44] : [40, 40],
           className: "custom-marker",
         }),
       }).addTo(map.current);
@@ -124,13 +145,23 @@ export function InteractiveMap({
       marker.bindTooltip(location.name, { permanent: false, direction: "top" });
     });
 
-    // Draw line connecting all locations
+    // Draw line connecting all locations - thicker and more visible
     if (coordinates.length > 0) {
       L.polyline(coordinates, {
         color: "#b45309",
-        weight: 2,
-        opacity: 0.6,
-        dashArray: "5, 5",
+        weight: 4,
+        opacity: 0.8,
+        lineCap: "round",
+        lineJoin: "round",
+      }).addTo(map.current);
+
+      // Add a subtle shadow effect with a thicker lighter line underneath
+      L.polyline(coordinates, {
+        color: "#f5deb3",
+        weight: 6,
+        opacity: 0.4,
+        lineCap: "round",
+        lineJoin: "round",
       }).addTo(map.current);
     }
   };
