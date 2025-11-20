@@ -177,34 +177,74 @@ export function InteractiveMap({
 
       {/* Legend */}
       <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 shadow-md">
-        <div className="p-6">
-          <p className="font-bold text-amber-950 mb-4 text-lg flex items-center gap-2">
-            🎨 Journey Phase Legend
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-            {[
-              { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶" },
-              { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶" },
-              { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲" },
-              { phase: "Search for Sita", color: "#22c55e", emoji: "🔍" },
-              { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑" },
-              { phase: "Post-Coronation", color: "#a855f7", emoji: "✨" },
-            ].map((item) => (
-              <div
-                key={item.phase}
-                className="flex items-center gap-3 p-2 bg-white rounded-lg border border-amber-200 hover:shadow-md transition"
-              >
-                <span>{item.emoji}</span>
-                <div
-                  className="w-4 h-4 rounded-full border-2 border-white shadow-md"
-                  style={{ backgroundColor: item.color }}
-                  title={item.phase}
-                />
-                <span className="text-amber-900 font-medium text-xs flex-grow">
-                  {item.phase.split(" ")[0]}
+        <div className="p-6 space-y-6">
+          <div>
+            <p className="font-bold text-amber-950 mb-4 text-lg flex items-center gap-2">
+              🗺️ Journey Markers Guide
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-4">
+              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-green-300">
+                <div style={{ backgroundColor: "#16a34a", color: "white", width: "36px", height: "36px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: "bold", border: "3px solid white" }}>
+                  🚩
+                </div>
+                <span className="text-amber-900 font-medium">
+                  <strong>START:</strong> Journey Begins (Ayodhya)
                 </span>
               </div>
-            ))}
+              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-red-300">
+                <div style={{ backgroundColor: "#dc2626", color: "white", width: "36px", height: "36px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: "bold", border: "3px solid white" }}>
+                  ✓
+                </div>
+                <span className="text-amber-900 font-medium">
+                  <strong>END:</strong> Journey Completes (Ayodhya)
+                </span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-amber-300">
+                <div style={{ backgroundColor: "#f97316", color: "white", width: "36px", height: "36px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", fontWeight: "bold", border: "3px solid white" }}>
+                  2
+                </div>
+                <span className="text-amber-900 font-medium">
+                  <strong>Numbers:</strong> Stop sequence in journey
+                </span>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-amber-300">
+                <div style={{ height: "3px", backgroundColor: "#b45309", width: "30px", borderRadius: "2px" }}></div>
+                <span className="text-amber-900 font-medium">
+                  <strong>Route Line:</strong> Complete journey path
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p className="font-bold text-amber-950 mb-4 text-lg flex items-center gap-2">
+              🎨 Journey Phase Legend
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+              {[
+                { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶" },
+                { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶" },
+                { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲" },
+                { phase: "Search for Sita", color: "#22c55e", emoji: "🔍" },
+                { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑" },
+                { phase: "Post-Coronation", color: "#a855f7", emoji: "✨" },
+              ].map((item) => (
+                <div
+                  key={item.phase}
+                  className="flex items-center gap-3 p-2 bg-white rounded-lg border border-amber-200 hover:shadow-md transition"
+                >
+                  <span>{item.emoji}</span>
+                  <div
+                    className="w-4 h-4 rounded-full border-2 border-white shadow-md"
+                    style={{ backgroundColor: item.color }}
+                    title={item.phase}
+                  />
+                  <span className="text-amber-900 font-medium text-xs flex-grow">
+                    {item.phase.split(" ")[0]}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Card>
