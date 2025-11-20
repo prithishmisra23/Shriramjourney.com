@@ -338,49 +338,49 @@ export function InteractiveMap({
       )}
 
       {/* Map Info */}
-      <Card className="border-2 border-amber-200 bg-white shadow-md">
-        <div className="p-6 space-y-4">
-          <p className="font-bold text-amber-950 text-lg">
-            📍 Map Features & Guide
+      <Card className="border-3 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-lg">
+        <div className="p-8 space-y-6">
+          <p className="font-playfair font-bold text-amber-950 text-2xl flex items-center gap-2">
+            📍 Complete Map Features
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ul className="text-sm text-amber-900 space-y-2">
-              <li className="flex items-start gap-2">
-                <span className="text-amber-700">✓</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ul className="text-base text-amber-900 space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-xl text-amber-700">✓</span>
                 <span>
-                  <strong>50+ Locations</strong> - All sacred pilgrimage sites
+                  <strong>50+ Sacred Locations</strong> - Comprehensive pilgrimage site coverage
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-amber-700">✓</span>
+              <li className="flex items-start gap-3">
+                <span className="text-xl text-amber-700">✓</span>
                 <span>
-                  <strong>6 Phases</strong> - Color-coded journey stages
+                  <strong>6 Journey Phases</strong> - Color-coded stages of Ram's divine life
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-amber-700">✓</span>
+              <li className="flex items-start gap-3">
+                <span className="text-xl text-amber-700">✓</span>
                 <span>
-                  <strong>Route Line</strong> - Complete journey path shown
+                  <strong>Golden Route Line</strong> - Complete journey path visualization
                 </span>
               </li>
             </ul>
-            <ul className="text-sm text-amber-900 space-y-2">
-              <li className="flex items-start gap-2">
-                <span className="text-amber-700">✓</span>
+            <ul className="text-base text-amber-900 space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-xl text-amber-700">✓</span>
                 <span>
-                  <strong>Interactive</strong> - Click markers for details
+                  <strong>Fully Interactive</strong> - Click any marker to view details
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-amber-700">✓</span>
+              <li className="flex items-start gap-3">
+                <span className="text-xl text-amber-700">✓</span>
                 <span>
-                  <strong>Zoomable</strong> - Explore any region in detail
+                  <strong>Zoom & Explore</strong> - Discover regional details and geography
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-amber-700">✓</span>
+              <li className="flex items-start gap-3">
+                <span className="text-xl text-amber-700">✓</span>
                 <span>
-                  <strong>Searchable</strong> - Find locations instantly
+                  <strong>Smart Search</strong> - Find any location by name or state instantly
                 </span>
               </li>
             </ul>
