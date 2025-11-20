@@ -42,7 +42,7 @@ export const ramLocations: Location[] = [
   {
     id: "janakpur",
     name: "Janakpur (Mithila)",
-    state: "Bihar",
+    state: "Janakpur",
     country: "Nepal",
     phase: "Birth & Early Life",
     latitude: 26.9124,
