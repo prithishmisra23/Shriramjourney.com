@@ -210,41 +210,41 @@ export function InteractiveMap({
       />
 
       {/* Legend */}
-      <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 shadow-md">
-        <div className="p-6 space-y-6">
+      <Card className="border-3 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-xl">
+        <div className="p-8 space-y-8">
           <div>
-            <p className="font-bold text-amber-950 mb-4 text-lg flex items-center gap-2">
+            <p className="font-playfair font-bold text-amber-950 mb-6 text-2xl flex items-center gap-2">
               🗺️ Journey Markers Guide
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-4">
-              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-green-300">
-                <div style={{ backgroundColor: "#16a34a", color: "white", width: "36px", height: "36px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: "bold", border: "3px solid white" }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm mb-6">
+              <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl border-2 border-green-400 shadow-md">
+                <div style={{ background: "linear-gradient(135deg, #16a34a 0%, #15803d 100%)", color: "white", width: "44px", height: "44px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px", fontWeight: "bold", border: "3px solid white", boxShadow: "0 4px 12px rgba(22, 163, 74, 0.4)" }}>
                   🚩
                 </div>
-                <span className="text-amber-900 font-medium">
-                  <strong>START:</strong> Journey Begins (Ayodhya)
+                <span className="text-green-900 font-bold">
+                  <strong>START POINT:</strong> Journey Begins at Holy Ayodhya
                 </span>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-red-300">
-                <div style={{ backgroundColor: "#dc2626", color: "white", width: "36px", height: "36px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: "bold", border: "3px solid white" }}>
+              <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-red-100 to-rose-100 rounded-xl border-2 border-red-400 shadow-md">
+                <div style={{ background: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)", color: "white", width: "44px", height: "44px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px", fontWeight: "bold", border: "3px solid white", boxShadow: "0 4px 12px rgba(220, 38, 38, 0.4)" }}>
                   ✓
                 </div>
-                <span className="text-amber-900 font-medium">
-                  <strong>END:</strong> Journey Completes (Ayodhya)
+                <span className="text-red-900 font-bold">
+                  <strong>END POINT:</strong> Journey Concludes at Ayodhya
                 </span>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-amber-300">
-                <div style={{ backgroundColor: "#f97316", color: "white", width: "36px", height: "36px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", fontWeight: "bold", border: "3px solid white" }}>
-                  2
+              <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-xl border-2 border-amber-400 shadow-md">
+                <div style={{ background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)", color: "white", width: "44px", height: "44px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "16px", fontWeight: "bold", border: "3px solid white", boxShadow: "0 4px 12px rgba(245, 158, 11, 0.4)" }}>
+                  25
                 </div>
-                <span className="text-amber-900 font-medium">
-                  <strong>Numbers:</strong> Stop sequence in journey
+                <span className="text-amber-900 font-bold">
+                  <strong>Numbered Stops:</strong> Sequence of pilgrimage sites
                 </span>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-amber-300">
-                <div style={{ height: "3px", backgroundColor: "#b45309", width: "30px", borderRadius: "2px" }}></div>
-                <span className="text-amber-900 font-medium">
-                  <strong>Route Line:</strong> Complete journey path
+              <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-orange-100 to-amber-100 rounded-xl border-2 border-orange-400 shadow-md">
+                <div style={{ height: "4px", background: "linear-gradient(to right, #d97706, #f59e0b)", width: "40px", borderRadius: "2px", boxShadow: "0 2px 8px rgba(217, 119, 6, 0.4)" }}></div>
+                <span className="text-orange-900 font-bold">
+                  <strong>Golden Route:</strong> Complete divine journey path
                 </span>
               </div>
             </div>
