@@ -9,55 +9,56 @@ export function Navigation() {
   const [showTemples, setShowTemples] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-amber-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b border-amber-200/50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-amber-700 to-amber-900 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-              🏰
+          <Link to="/" className="flex items-center gap-2 group hover:scale-105 transition-transform">
+            <div className="w-9 h-9 bg-gradient-to-br from-amber-700 to-amber-900 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-amber-700/50 transition-shadow">
+              🏛️
             </div>
-            <span className="font-playfair font-bold text-xl text-amber-900 hidden sm:inline">
+            <span className="font-playfair font-bold text-lg text-amber-900 hidden sm:inline hover:gradient-text transition-all">
               Bhagwan Shri Ram Journey
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden md:flex items-center gap-8">
             <Link
               to="/map"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+              className="text-amber-900 font-bold text-sm hover:text-amber-700 transition relative group"
             >
-              Map
+              🗺️ Map
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-700 to-amber-900 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
             {/* Sacred Temples Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1 text-amber-900 hover:text-amber-700 transition font-medium text-sm">
+              <button className="flex items-center gap-2 text-amber-900 font-bold text-sm hover:text-amber-700 transition py-2 px-1">
                 🏛️ Temples
-                <ChevronDown className="w-4 h-4" />
+                <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
               </button>
-              <div className="absolute left-0 mt-0 w-48 bg-white border border-amber-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="absolute left-0 mt-0 w-52 bg-white/98 backdrop-blur-md border-2 border-amber-200 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
                 <Link
                   to="/ram-mandir"
-                  className="block px-4 py-3 text-amber-900 hover:bg-amber-50 border-b border-amber-100 text-sm font-medium"
+                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 border-b border-amber-100 text-sm font-bold transition-all"
                 >
-                  Ram Mandir
+                  🏰 Ram Mandir
                 </Link>
                 <Link
                   to="/janaki-mandir"
-                  className="block px-4 py-3 text-amber-900 hover:bg-amber-50 border-b border-amber-100 text-sm font-medium"
+                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 border-b border-amber-100 text-sm font-bold transition-all"
                 >
-                  Janaki Mandir
+                  👑 Janaki Mandir
                 </Link>
                 <Link
                   to="/nashik"
-                  className="block px-4 py-3 text-amber-900 hover:bg-amber-50 border-b border-amber-100 text-sm font-medium"
+                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 border-b border-amber-100 text-sm font-bold transition-all"
                 >
-                  Nashik & Panchavati
+                  🌊 Nashik & Panchavati
                 </Link>
                 <Link
                   to="/rameswaram"
-                  className="block px-4 py-3 text-amber-900 hover:bg-amber-50 text-sm font-medium"
+                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 text-sm font-bold transition-all"
                 >
                   Ramanathaswamy
                 </Link>

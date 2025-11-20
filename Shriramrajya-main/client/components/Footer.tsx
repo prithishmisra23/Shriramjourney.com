@@ -20,7 +20,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-amber-700 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                🏰
+                🏛️
               </div>
               <span className="font-playfair font-bold text-xl">
                 Bhagwan Shri Ram Journey

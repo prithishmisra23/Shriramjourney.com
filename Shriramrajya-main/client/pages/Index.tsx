@@ -539,7 +539,7 @@ export default function Index() {
                     },
                     {
                       name: "Janaki Mandir",
-                      city: "Janakpur, Bihar",
+                      city: "Janakpur, Nepal",
                       year: "300+ yrs",
                       icon: "👑",
                       link: "/janaki-mandir",
