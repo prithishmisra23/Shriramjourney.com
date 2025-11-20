@@ -117,6 +117,7 @@ export default function MapPage() {
           <InteractiveMap
             selectedLocation={selectedLocation}
             onLocationSelect={setSelectedLocation}
+            locations={filteredLocations}
           />
         </div>
 

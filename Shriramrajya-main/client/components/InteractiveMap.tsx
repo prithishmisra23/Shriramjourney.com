@@ -13,11 +13,13 @@ declare global {
 interface InteractiveMapProps {
   selectedLocation?: Location | null;
   onLocationSelect?: (location: Location) => void;
+  locations?: Location[];
 }
 
 export function InteractiveMap({
   selectedLocation,
   onLocationSelect,
+  locations = ramLocations,
 }: InteractiveMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<any>(null);
@@ -75,7 +77,7 @@ export function InteractiveMap({
     // Add markers and create polyline
     const coordinates: [number, number][] = [];
 
-    ramLocations.forEach((location) => {
+    locations.forEach((location) => {
       coordinates.push([location.latitude, location.longitude]);
 
       const color = phaseColors[location.phase] || "#8b5a2b";
