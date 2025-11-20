@@ -127,63 +127,66 @@ export default function MapPage() {
 
         {/* Statistics & Info Panels */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center hover:shadow-lg transition">
-            <p className="text-3xl font-bold text-amber-700 mb-2">
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-red-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
+            <p className="text-4xl font-bold bg-gradient-text mb-2">
               {filteredLocations.length}
             </p>
-            <p className="text-sm font-semibold text-amber-900">
+            <p className="text-sm font-bold text-amber-900">
               Locations Shown
             </p>
           </Card>
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center hover:shadow-lg transition">
-            <p className="text-3xl font-bold text-amber-700 mb-2">
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
+            <p className="text-4xl font-bold bg-gradient-text mb-2">
               {ramLocations.length}
             </p>
-            <p className="text-sm font-semibold text-amber-900">
+            <p className="text-sm font-bold text-amber-900">
               Total Locations
             </p>
           </Card>
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center hover:shadow-lg transition">
-            <p className="text-3xl font-bold text-amber-700 mb-2">6</p>
-            <p className="text-sm font-semibold text-amber-900">
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-green-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
+            <p className="text-4xl font-bold bg-gradient-text mb-2">6</p>
+            <p className="text-sm font-bold text-amber-900">
               Journey Phases
             </p>
           </Card>
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center hover:shadow-lg transition">
-            <p className="text-3xl font-bold text-amber-700 mb-2">2</p>
-            <p className="text-sm font-semibold text-amber-900">Countries</p>
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-blue-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
+            <p className="text-4xl font-bold bg-gradient-text mb-2">2</p>
+            <p className="text-sm font-bold text-amber-900">Countries</p>
           </Card>
         </div>
 
         {/* Help & Tips Section */}
-        <Card className="border-2 border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-6">
-          <p className="font-playfair font-bold text-amber-950 text-lg mb-4">
-            💡 How to Use This Map
+        <Card className="border-3 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-8 shadow-lg">
+          <p className="font-playfair font-bold text-amber-950 text-2xl mb-6 flex items-center gap-2">
+            💡 How to Use This Sacred Map
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-            <ul className="space-y-2 text-amber-900">
-              <li>
-                ✓ <strong>Click markers</strong> to view location details
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-base">
+            <ul className="space-y-3 text-amber-900">
+              <li className="flex items-start gap-3">
+                <span className="text-lg mt-1">✓</span>
+                <span><strong>Click markers</strong> to view detailed location history and significance</span>
               </li>
-              <li>
-                ✓ <strong>Zoom & pan</strong> to explore regions
+              <li className="flex items-start gap-3">
+                <span className="text-lg mt-1">✓</span>
+                <span><strong>Zoom & pan</strong> to explore sacred regions and geographical details</span>
               </li>
-              <li>
-                ✓ <strong>Color-coded pins</strong> show different journey
-                phases
+              <li className="flex items-start gap-3">
+                <span className="text-lg mt-1">✓</span>
+                <span><strong>Color-coded pins</strong> represent different journey phases (red, orange, yellow, green, blue, purple)</span>
               </li>
             </ul>
-            <ul className="space-y-2 text-amber-900">
-              <li>
-                ✓ <strong>Search</strong> to find specific locations instantly
+            <ul className="space-y-3 text-amber-900">
+              <li className="flex items-start gap-3">
+                <span className="text-lg mt-1">✓</span>
+                <span><strong>Search</strong> specific locations by name or state to find them instantly</span>
               </li>
-              <li>
-                ✓ <strong>Filter by phase</strong> to focus on specific parts of
-                the journey
+              <li className="flex items-start gap-3">
+                <span className="text-lg mt-1">✓</span>
+                <span><strong>Filter by phase</strong> to focus on specific chapters of Ram's divine journey</span>
               </li>
-              <li>
-                ✓ <strong>View details page</strong> for full history and travel
-                info
+              <li className="flex items-start gap-3">
+                <span className="text-lg mt-1">✓</span>
+                <span><strong>Golden route line</strong> traces the complete pilgrimage path from start to end</span>
               </li>
             </ul>
           </div>
