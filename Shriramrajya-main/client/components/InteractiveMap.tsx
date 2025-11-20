@@ -251,30 +251,31 @@ export function InteractiveMap({
           </div>
 
           <div>
-            <p className="font-bold text-amber-950 mb-4 text-lg flex items-center gap-2">
-              🎨 Journey Phase Legend
+            <p className="font-playfair font-bold text-amber-950 mb-6 text-2xl flex items-center gap-2">
+              🎨 Six Phases of the Divine Journey
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
               {[
-                { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶" },
-                { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶" },
-                { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲" },
-                { phase: "Search for Sita", color: "#22c55e", emoji: "🔍" },
-                { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑" },
-                { phase: "Post-Coronation", color: "#a855f7", emoji: "✨" },
+                { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶", description: "Ayodhya" },
+                { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶", description: "Exile Starts" },
+                { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲", description: "Forests" },
+                { phase: "Search for Sita", color: "#22c55e", emoji: "🔍", description: "Quest" },
+                { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑", description: "Victory" },
+                { phase: "Post-Coronation", color: "#a855f7", emoji: "✨", description: "Legacy" },
               ].map((item) => (
                 <div
                   key={item.phase}
-                  className="flex items-center gap-3 p-2 bg-white rounded-lg border border-amber-200 hover:shadow-md transition"
+                  className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-white to-amber-100 rounded-xl border-2 transition-all hover:shadow-lg hover:scale-105"
+                  style={{ borderColor: item.color }}
                 >
-                  <span>{item.emoji}</span>
+                  <span className="text-3xl">{item.emoji}</span>
                   <div
-                    className="w-4 h-4 rounded-full border-2 border-white shadow-md"
-                    style={{ backgroundColor: item.color }}
+                    className="w-6 h-6 rounded-full border-3 border-white shadow-lg"
+                    style={{ backgroundColor: item.color, boxShadow: `0 0 10px ${item.color}80` }}
                     title={item.phase}
                   />
-                  <span className="text-amber-900 font-medium text-xs flex-grow">
-                    {item.phase.split(" ")[0]}
+                  <span className="text-amber-900 font-bold text-xs text-center">
+                    {item.description}
                   </span>
                 </div>
               ))}
