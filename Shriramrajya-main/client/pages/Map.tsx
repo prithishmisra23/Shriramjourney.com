@@ -37,19 +37,22 @@ export default function MapPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         {/* Hero Section */}
-        <div className="mb-12 bg-gradient-to-r from-amber-700 to-amber-900 text-white rounded-2xl p-8 md:p-12 shadow-lg">
-          <div className="flex items-start justify-between gap-6">
+        <div className="mb-12 bg-gradient-to-br from-amber-700 via-amber-800 to-amber-900 text-white rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.2),transparent_50%)]"></div>
+          </div>
+          <div className="relative z-10 flex items-start justify-between gap-6">
             <div>
-              <h1 className="font-playfair font-bold text-5xl mb-4">
+              <h1 className="font-playfair font-bold text-5xl md:text-6xl mb-4 animate-slideDown">
                 🗺️ Ram Rajya Sacred Map
               </h1>
-              <p className="text-xl text-amber-100 max-w-2xl">
-                Explore all 50+ sacred locations on Shri Ram's divine journey
-                across Bharat
+              <p className="text-lg md:text-xl text-amber-100 max-w-3xl leading-relaxed">
+                Follow Shri Ram's divine journey across 50 sacred locations spanning 6 phases of his eternal life. Each marker represents a sacred moment in the legend.
               </p>
             </div>
-            <Button className="bg-white text-amber-700 hover:bg-amber-50 hidden md:flex whitespace-nowrap">
-              <Download className="w-4 h-4 mr-2" />
+            <Button className="bg-white text-amber-700 hover:bg-amber-50 hidden md:flex whitespace-nowrap font-semibold px-6 py-3 rounded-xl shadow-lg">
+              <Download className="w-5 h-5 mr-2" />
               Download Map
             </Button>
           </div>
