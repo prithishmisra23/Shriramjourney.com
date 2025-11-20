@@ -449,7 +449,7 @@ export default function RamMandir() {
             </Button>
           </Link>
           <a
-            href="https://www.airindia.com"
+            href="https://www.airindia.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
