@@ -314,7 +314,7 @@ export default function DarshanLivestreams() {
                       </p>
                       {currentLivestream.isLive && (
                         <div className="flex items-center gap-2 justify-center text-red-500 font-bold">
-                          <Live className="w-5 h-5 animate-pulse" />
+                          <Radio className="w-5 h-5 animate-pulse" />
                           NOW PLAYING LIVE DARSHAN
                         </div>
                       )}
