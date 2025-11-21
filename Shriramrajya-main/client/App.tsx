@@ -19,17 +19,25 @@ import JanakiMandir from "./pages/JanakiMandir";
 import RameswaramPage from "./pages/Rameswaram";
 import NashikPage from "./pages/Nashik";
 import Premium from "./pages/Premium";
+import SouvenirStore from "./pages/SouvenirStore";
+import InternationalRamayana from "./pages/InternationalRamayana";
+import DigitalPooja from "./pages/DigitalPooja";
+import OfflineMode from "./pages/OfflineMode";
+import ARVRWalk from "./pages/ARVRWalk";
+import DarshanLivestreams from "./pages/DarshanLivestreams";
 import NotFound from "./pages/NotFound";
 import { Chatbot } from "@/components/Chatbot";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+  <LanguageProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/map" element={<MapPage />} />
@@ -44,6 +52,12 @@ const App = () => (
           <Route path="/rameswaram" element={<RameswaramPage />} />
           <Route path="/nashik" element={<NashikPage />} />
           <Route path="/premium" element={<Premium />} />
+          <Route path="/souvenir-store" element={<SouvenirStore />} />
+          <Route path="/international-ramayana" element={<InternationalRamayana />} />
+          <Route path="/digital-pooja" element={<DigitalPooja />} />
+          <Route path="/offline-mode" element={<OfflineMode />} />
+          <Route path="/ar-vr-walk" element={<ARVRWalk />} />
+          <Route path="/livestreams" element={<DarshanLivestreams />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -51,6 +65,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+  </LanguageProvider>
 );
 
 const rootElement = document.getElementById("root");
