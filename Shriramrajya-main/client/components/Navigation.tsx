@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [showMainMenu, setShowMainMenu] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   const mainFeatures = [
     { icon: "🗺️", label: "Map", href: "/map" },
