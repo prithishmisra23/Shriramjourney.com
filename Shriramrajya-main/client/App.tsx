@@ -50,6 +50,12 @@ const App = () => (
           <Route path="/rameswaram" element={<RameswaramPage />} />
           <Route path="/nashik" element={<NashikPage />} />
           <Route path="/premium" element={<Premium />} />
+          <Route path="/souvenir-store" element={<SouvenirStore />} />
+          <Route path="/international-ramayana" element={<InternationalRamayana />} />
+          <Route path="/digital-pooja" element={<DigitalPooja />} />
+          <Route path="/offline-mode" element={<OfflineMode />} />
+          <Route path="/ar-vr-walk" element={<ARVRWalk />} />
+          <Route path="/livestreams" element={<DarshanLivestreams />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
