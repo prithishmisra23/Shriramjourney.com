@@ -2,292 +2,247 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showTemples, setShowTemples] = useState(false);
+  const [showMainMenu, setShowMainMenu] = useState(false);
+
+  const mainFeatures = [
+    { icon: "🗺️", label: "Map", href: "/map" },
+    { icon: "📅", label: "Timeline", href: "/timeline" },
+    { icon: "📋", label: "Itinerary", href: "/itinerary" },
+  ];
+
+  const exploreFeatures = [
+    { icon: "🏛️", label: "Sacred Temples", href: "/ram-mandir" },
+    { icon: "🎓", label: "Quiz & Learning", href: "/quiz" },
+    { icon: "📖", label: "Stories", href: "/community" },
+    { icon: "🌍", label: "International Ramayana", href: "/international-ramayana" },
+  ];
+
+  const newFeatures = [
+    { icon: "🛍️", label: "Souvenir Store", href: "/souvenir-store" },
+    { icon: "🙏", label: "Digital Pooja", href: "/digital-pooja" },
+    { icon: "🔴", label: "Live Darshan", href: "/livestreams" },
+    { icon: "📱", label: "Offline Mode", href: "/offline-mode" },
+    { icon: "🥽", label: "VR/AR Experience", href: "/ar-vr-walk" },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b border-amber-200/50 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2 group hover:scale-105 transition-transform">
-            <div className="w-9 h-9 bg-gradient-to-br from-amber-700 to-amber-900 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-amber-700/50 transition-shadow">
-              🏛️
-            </div>
-            <span className="font-playfair font-bold text-lg text-amber-900 hidden sm:inline hover:gradient-text transition-all">
-              Bhagwan Shri Ram Journey
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-amber-700 via-amber-800 to-amber-900 shadow-xl">
+      <div className="max-w-7xl mx-auto">
+        {/* Top Bar */}
+        <div className="px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
             <Link
-              to="/map"
-              className="text-amber-900 font-bold text-sm hover:text-amber-700 transition relative group"
+              to="/"
+              className="flex items-center gap-3 group hover:opacity-90 transition-opacity"
             >
-              🗺️ Map
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-700 to-amber-900 group-hover:w-full transition-all duration-300"></span>
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center font-bold text-amber-700 shadow-lg">
+                🏛️
+              </div>
+              <div className="flex flex-col">
+                <span className="font-playfair font-bold text-white text-lg hidden sm:inline">
+                  Bhagwan
+                </span>
+                <span className="font-playfair font-bold text-amber-100 text-sm">
+                  Shri Ram Journey
+                </span>
+              </div>
             </Link>
 
-            {/* Sacred Temples Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center gap-2 text-amber-900 font-bold text-sm hover:text-amber-700 transition py-2 px-1">
-                🏛️ Temples
-                <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
-              </button>
-              <div className="absolute left-0 mt-0 w-52 bg-white/98 backdrop-blur-md border-2 border-amber-200 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
-                <Link
-                  to="/ram-mandir"
-                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 border-b border-amber-100 text-sm font-bold transition-all"
-                >
-                  🏰 Ram Mandir
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-2">
+              {mainFeatures.map((item) => (
+                <Link key={item.href} to={item.href}>
+                  <button className="px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium text-sm">
+                    {item.icon} {item.label}
+                  </button>
                 </Link>
-                <Link
-                  to="/janaki-mandir"
-                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 border-b border-amber-100 text-sm font-bold transition-all"
-                >
-                  👑 Janaki Mandir
-                </Link>
-                <Link
-                  to="/nashik"
-                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 border-b border-amber-100 text-sm font-bold transition-all"
-                >
-                  🌊 Nashik & Panchavati
-                </Link>
-                <Link
-                  to="/rameswaram"
-                  className="block px-5 py-3 text-amber-900 hover:bg-gradient-to-r hover:from-amber-50 to-orange-50 text-sm font-bold transition-all"
-                >
-                  Ramanathaswamy
-                </Link>
+              ))}
+
+              {/* Mega Menu Button */}
+              <div className="relative group">
+                <button className="px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium text-sm flex items-center gap-2">
+                  ✨ Explore
+                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
+                </button>
+
+                {/* Mega Menu Dropdown */}
+                <div className="absolute left-0 mt-0 w-96 bg-white shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
+                  <div className="p-6">
+                    <div className="space-y-6">
+                      {/* Temples */}
+                      <div>
+                        <h3 className="font-bold text-amber-900 text-sm mb-3">
+                          🏛️ SACRED TEMPLES
+                        </h3>
+                        <div className="space-y-2">
+                          {[
+                            { label: "Ram Mandir", href: "/ram-mandir" },
+                            { label: "Janaki Mandir", href: "/janaki-mandir" },
+                            { label: "Nashik & Panchavati", href: "/nashik" },
+                            { label: "Rameswaram", href: "/rameswaram" },
+                          ].map((item) => (
+                            <Link key={item.href} to={item.href}>
+                              <div className="text-amber-800 hover:text-amber-600 hover:bg-amber-50 px-3 py-2 rounded transition text-sm font-medium">
+                                {item.label}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="border-t border-amber-200"></div>
+
+                      {/* Explore Options */}
+                      <div>
+                        <h3 className="font-bold text-amber-900 text-sm mb-3">
+                          📚 LEARN & ENGAGE
+                        </h3>
+                        <div className="grid grid-cols-2 gap-2">
+                          {exploreFeatures.map((item) => (
+                            <Link key={item.href} to={item.href}>
+                              <div className="text-amber-800 hover:text-amber-600 hover:bg-amber-50 px-3 py-2 rounded transition text-sm font-medium">
+                                {item.icon} {item.label}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="border-t border-amber-200"></div>
+
+                      {/* New Features */}
+                      <div>
+                        <h3 className="font-bold text-amber-900 text-sm mb-3">
+                          🎉 NEW FEATURES
+                        </h3>
+                        <div className="grid grid-cols-2 gap-2">
+                          {newFeatures.map((item) => (
+                            <Link key={item.href} to={item.href}>
+                              <div className="text-amber-800 hover:text-amber-600 hover:bg-amber-50 px-3 py-2 rounded transition text-sm font-medium">
+                                {item.icon} {item.label}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <Link
-              to="/timeline"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 hover:bg-white/10 rounded-lg transition text-white"
             >
-              Timeline
-            </Link>
-            <Link
-              to="/quiz"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              Quiz
-            </Link>
-            <Link
-              to="/community"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              Stories
-            </Link>
-            <Link
-              to="/itinerary"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              Itinerary
-            </Link>
-            <Link
-              to="/souvenir-store"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              🛍️ Store
-            </Link>
-            <Link
-              to="/international-ramayana"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              🌍 International
-            </Link>
-            <Link
-              to="/digital-pooja"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              🙏 Pooja
-            </Link>
-            <Link
-              to="/livestreams"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              🔴 Livestreams
-            </Link>
-            <Link
-              to="/offline-mode"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              📱 Offline
-            </Link>
-            <Link
-              to="/ar-vr-walk"
-              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
-            >
-              🥽 VR/AR
-            </Link>
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 hover:bg-amber-50 rounded-lg transition"
-          >
-            {isOpen ? (
-              <X className="w-5 h-5 text-amber-900" />
-            ) : (
-              <Menu className="w-5 h-5 text-amber-900" />
-            )}
-          </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2">
-            <Link
-              to="/map"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              Map
-            </Link>
+          <div className="lg:hidden bg-gradient-to-b from-amber-800 to-amber-900 px-4 sm:px-6 pb-4 space-y-3 max-h-96 overflow-y-auto">
+            {mainFeatures.map((item) => (
+              <Link key={item.href} to={item.href}>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-full text-left px-4 py-2 text-white hover:bg-white/10 rounded-lg transition text-sm font-medium"
+                >
+                  {item.icon} {item.label}
+                </button>
+              </Link>
+            ))}
 
-            {/* Sacred Temples Mobile */}
+            <div className="border-t border-white/20"></div>
+
+            {/* Mobile Explore Menu */}
             <button
-              onClick={() => setShowTemples(!showTemples)}
-              className="w-full text-left px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm font-semibold flex items-center justify-between"
+              onClick={() => setShowMainMenu(!showMainMenu)}
+              className="w-full text-left px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium flex items-center justify-between"
             >
-              🏛️ Sacred Temples
+              ✨ Explore All Features
               <ChevronDown
-                className={`w-4 h-4 transition-transform ${showTemples ? "rotate-180" : ""}`}
+                className={`w-4 h-4 transition-transform ${
+                  showMainMenu ? "rotate-180" : ""
+                }`}
               />
             </button>
-            {showTemples && (
-              <>
-                <Link
-                  to="/ram-mandir"
-                  className="block px-8 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-                  onClick={() => {
-                    setIsOpen(false);
-                    setShowTemples(false);
-                  }}
-                >
-                  Ram Mandir
-                </Link>
-                <Link
-                  to="/janaki-mandir"
-                  className="block px-8 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-                  onClick={() => {
-                    setIsOpen(false);
-                    setShowTemples(false);
-                  }}
-                >
-                  Janaki Mandir
-                </Link>
-                <Link
-                  to="/nashik"
-                  className="block px-8 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-                  onClick={() => {
-                    setIsOpen(false);
-                    setShowTemples(false);
-                  }}
-                >
-                  Nashik & Panchavati
-                </Link>
-                <Link
-                  to="/rameswaram"
-                  className="block px-8 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-                  onClick={() => {
-                    setIsOpen(false);
-                    setShowTemples(false);
-                  }}
-                >
-                  Ramanathaswamy
-                </Link>
-              </>
-            )}
 
-            <Link
-              to="/timeline"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              Timeline
-            </Link>
-            <Link
-              to="/quiz"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              Quiz
-            </Link>
-            <Link
-              to="/community"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              Stories
-            </Link>
-            <Link
-              to="/itinerary"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              Itinerary
-            </Link>
-            <Link
-              to="/souvenir-store"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              🛍️ Souvenir Store
-            </Link>
-            <Link
-              to="/international-ramayana"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              🌍 Ramayana Beyond Bharat
-            </Link>
-            <Link
-              to="/digital-pooja"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              🙏 Digital Pooja & Prasad
-            </Link>
-            <Link
-              to="/livestreams"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              🔴 Temple Livestreams
-            </Link>
-            <Link
-              to="/offline-mode"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              📱 Offline Mode
-            </Link>
-            <Link
-              to="/ar-vr-walk"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              🥽 AR/VR Walk with Ram
-            </Link>
-            <Link
-              to="/about"
-              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <div className="px-4 py-2">
-              <Button className="w-full bg-amber-700 hover:bg-amber-800 text-sm">
-                📞 Support
-              </Button>
-            </div>
+            {showMainMenu && (
+              <div className="ml-4 space-y-3 py-2">
+                {/* Temples */}
+                <div>
+                  <p className="text-amber-200 text-xs font-bold mb-2">
+                    🏛️ SACRED TEMPLES
+                  </p>
+                  <div className="space-y-1">
+                    {[
+                      { label: "Ram Mandir", href: "/ram-mandir" },
+                      { label: "Janaki Mandir", href: "/janaki-mandir" },
+                      { label: "Nashik & Panchavati", href: "/nashik" },
+                      { label: "Rameswaram", href: "/rameswaram" },
+                    ].map((item) => (
+                      <Link key={item.href} to={item.href}>
+                        <div
+                          onClick={() => setIsOpen(false)}
+                          className="text-amber-100 hover:text-white hover:bg-white/10 px-3 py-2 rounded transition text-sm"
+                        >
+                          {item.label}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Learn */}
+                <div>
+                  <p className="text-amber-200 text-xs font-bold mb-2">
+                    📚 LEARN & ENGAGE
+                  </p>
+                  <div className="space-y-1">
+                    {exploreFeatures.map((item) => (
+                      <Link key={item.href} to={item.href}>
+                        <div
+                          onClick={() => setIsOpen(false)}
+                          className="text-amber-100 hover:text-white hover:bg-white/10 px-3 py-2 rounded transition text-sm"
+                        >
+                          {item.icon} {item.label}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* New Features */}
+                <div>
+                  <p className="text-amber-200 text-xs font-bold mb-2">
+                    🎉 NEW FEATURES
+                  </p>
+                  <div className="space-y-1">
+                    {newFeatures.map((item) => (
+                      <Link key={item.href} to={item.href}>
+                        <div
+                          onClick={() => setIsOpen(false)}
+                          className="text-amber-100 hover:text-white hover:bg-white/10 px-3 py-2 rounded transition text-sm"
+                        >
+                          {item.icon} {item.label}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
