@@ -255,6 +255,19 @@ export function Navigation() {
                 </div>
               </div>
             )}
+
+            <div className="border-t border-white/20 pt-3 mt-3">
+              <button
+                onClick={() => {
+                  toggleLanguage();
+                  setIsOpen(false);
+                }}
+                className="w-full text-left px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium flex items-center gap-2"
+              >
+                <Globe className="w-4 h-4" />
+                {language === "en" ? "हिंदी में" : "English"}
+              </button>
+            </div>
           </div>
         )}
       </div>
