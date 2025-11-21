@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Live, Clock, Users, Volume2, Bell } from "lucide-react";
+import { Radio, Clock, Users, Volume2, Bell } from "lucide-react";
 import { useState } from "react";
 
 interface Livestream {
