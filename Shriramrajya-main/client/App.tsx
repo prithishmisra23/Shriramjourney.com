@@ -27,6 +27,7 @@ import ARVRWalk from "./pages/ARVRWalk";
 import DarshanLivestreams from "./pages/DarshanLivestreams";
 import NotFound from "./pages/NotFound";
 import { Chatbot } from "@/components/Chatbot";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const queryClient = new QueryClient();
 
