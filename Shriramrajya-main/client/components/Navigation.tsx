@@ -235,6 +235,48 @@ export function Navigation() {
               Itinerary
             </Link>
             <Link
+              to="/souvenir-store"
+              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              🛍️ Souvenir Store
+            </Link>
+            <Link
+              to="/international-ramayana"
+              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              🌍 Ramayana Beyond Bharat
+            </Link>
+            <Link
+              to="/digital-pooja"
+              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              🙏 Digital Pooja & Prasad
+            </Link>
+            <Link
+              to="/livestreams"
+              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              🔴 Temple Livestreams
+            </Link>
+            <Link
+              to="/offline-mode"
+              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              📱 Offline Mode
+            </Link>
+            <Link
+              to="/ar-vr-walk"
+              className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
+              onClick={() => setIsOpen(false)}
+            >
+              🥽 AR/VR Walk with Ram
+            </Link>
+            <Link
               to="/about"
               className="block px-4 py-2 text-amber-900 hover:bg-amber-50 rounded transition text-sm"
               onClick={() => setIsOpen(false)}
