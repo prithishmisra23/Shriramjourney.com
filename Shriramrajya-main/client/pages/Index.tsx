@@ -634,6 +634,36 @@ export default function Index() {
                       title: "Travel Bookings",
                       desc: "Book flights, hotels, trains easily",
                     },
+                    {
+                      icon: "🛍️",
+                      title: "Souvenir Store",
+                      desc: "Buy handcrafted art and Ramayana gifts",
+                    },
+                    {
+                      icon: "🌍",
+                      title: "International Ramayana",
+                      desc: "Explore Ramayana across Asia",
+                    },
+                    {
+                      icon: "🙏",
+                      title: "Digital Pooja Booking",
+                      desc: "Book temple ceremonies online",
+                    },
+                    {
+                      icon: "📱",
+                      title: "Offline Mode",
+                      desc: "Download guides and maps for offline use",
+                    },
+                    {
+                      icon: "🥽",
+                      title: "AR/VR Walk with Ram",
+                      desc: "Immersive 3D experience of Ramayana",
+                    },
+                    {
+                      icon: "🔴",
+                      title: "Temple Livestreams",
+                      desc: "Watch live darshan from temples 24/7",
+                    },
                   ].map((feature, idx) => (
                     <Card
                       key={idx}
