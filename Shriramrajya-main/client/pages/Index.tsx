@@ -690,7 +690,7 @@ export default function Index() {
       {/* Quick Actions */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-amber-100 to-orange-100 border-y-4 border-amber-200">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             <Link to="/map">
               <div className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition cursor-pointer border-2 border-amber-200 h-full hover:border-amber-400">
                 <p className="text-4xl mb-3">🗺️</p>
@@ -719,6 +719,36 @@ export default function Index() {
                 <p className="text-4xl mb-3">📖</p>
                 <p className="font-bold text-amber-950">Share Story</p>
                 <p className="text-xs text-amber-800 mt-2">Community Tales</p>
+              </div>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link to="/livestreams">
+              <div className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition cursor-pointer border-2 border-amber-200 h-full hover:border-amber-400">
+                <p className="text-4xl mb-3">🔴</p>
+                <p className="font-bold text-amber-950">Live Darshan</p>
+                <p className="text-xs text-amber-800 mt-2">Watch Temple Ceremonies</p>
+              </div>
+            </Link>
+            <Link to="/ar-vr-walk">
+              <div className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition cursor-pointer border-2 border-amber-200 h-full hover:border-amber-400">
+                <p className="text-4xl mb-3">🥽</p>
+                <p className="font-bold text-amber-950">VR Experience</p>
+                <p className="text-xs text-amber-800 mt-2">Immersive Journey</p>
+              </div>
+            </Link>
+            <Link to="/digital-pooja">
+              <div className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition cursor-pointer border-2 border-amber-200 h-full hover:border-amber-400">
+                <p className="text-4xl mb-3">🙏</p>
+                <p className="font-bold text-amber-950">Book Pooja</p>
+                <p className="text-xs text-amber-800 mt-2">Online Ceremonies</p>
+              </div>
+            </Link>
+            <Link to="/souvenir-store">
+              <div className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition cursor-pointer border-2 border-amber-200 h-full hover:border-amber-400">
+                <p className="text-4xl mb-3">🛍️</p>
+                <p className="font-bold text-amber-950">Shop Souvenirs</p>
+                <p className="text-xs text-amber-800 mt-2">Handcrafted Items</p>
               </div>
             </Link>
           </div>
