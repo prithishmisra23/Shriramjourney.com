@@ -89,6 +89,42 @@ export function Navigation() {
             >
               Itinerary
             </Link>
+            <Link
+              to="/souvenir-store"
+              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+            >
+              🛍️ Store
+            </Link>
+            <Link
+              to="/international-ramayana"
+              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+            >
+              🌍 International
+            </Link>
+            <Link
+              to="/digital-pooja"
+              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+            >
+              🙏 Pooja
+            </Link>
+            <Link
+              to="/livestreams"
+              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+            >
+              🔴 Livestreams
+            </Link>
+            <Link
+              to="/offline-mode"
+              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+            >
+              📱 Offline
+            </Link>
+            <Link
+              to="/ar-vr-walk"
+              className="text-amber-900 hover:text-amber-700 transition font-medium text-sm"
+            >
+              🥽 VR/AR
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
