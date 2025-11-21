@@ -19,6 +19,12 @@ import JanakiMandir from "./pages/JanakiMandir";
 import RameswaramPage from "./pages/Rameswaram";
 import NashikPage from "./pages/Nashik";
 import Premium from "./pages/Premium";
+import SouvenirStore from "./pages/SouvenirStore";
+import InternationalRamayana from "./pages/InternationalRamayana";
+import DigitalPooja from "./pages/DigitalPooja";
+import OfflineMode from "./pages/OfflineMode";
+import ARVRWalk from "./pages/ARVRWalk";
+import DarshanLivestreams from "./pages/DarshanLivestreams";
 import NotFound from "./pages/NotFound";
 import { Chatbot } from "@/components/Chatbot";
 
