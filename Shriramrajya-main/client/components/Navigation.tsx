@@ -133,8 +133,18 @@ export function Navigation() {
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
+            </div>
+
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="px-3 py-2 text-white hover:bg-white/10 rounded-lg transition font-bold text-sm flex items-center gap-2"
+              title={language === "en" ? "Switch to Hindi" : "Switch to English"}
+            >
+              <Globe className="w-4 h-4" />
+              {language.toUpperCase()}
+            </button>
             </div>
 
             {/* Mobile Menu Button */}
