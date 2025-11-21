@@ -386,7 +386,7 @@ export default function DarshanLivestreams() {
 
                     <div className="flex gap-4">
                       <Button className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold">
-                        <Live className="w-4 h-4 mr-2" />
+                        <Radio className="w-4 h-4 mr-2" />
                         Subscribe to Updates
                       </Button>
                       <Button
