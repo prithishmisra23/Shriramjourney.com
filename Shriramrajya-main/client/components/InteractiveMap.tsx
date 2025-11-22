@@ -58,16 +58,27 @@ export function InteractiveMap({
 
     const L = window.L;
 
-    // Center of India (roughly middle of Ram's journey)
-    const center = [22.5, 80];
+    // Center on northern India, covering the entire journey route
+    const center = [23.5, 80.5];
+    const initialZoom = 5;
 
-    map.current = L.map(mapContainer.current).setView(center, 5);
+    map.current = L.map(mapContainer.current, {
+      scrollWheelZoom: true,
+      trackResize: true,
+    }).setView(center, initialZoom);
 
-    // Add tile layer
+    // Add tile layer with better styling
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
+      minZoom: 4,
+      className: "map-tiles",
+    }).addTo(map.current);
+
+    // Add a subtle zoom control
+    L.control.zoom({
+      position: "topright",
     }).addTo(map.current);
 
     setMapReady(true);
