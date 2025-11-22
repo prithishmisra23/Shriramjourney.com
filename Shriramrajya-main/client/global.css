@@ -440,16 +440,35 @@ input::placeholder {
 /* Journey Tooltip Styling */
 .journey-tooltip {
   background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
-  border-radius: 8px !important;
-  padding: 8px 14px !important;
+  border-radius: 10px !important;
+  padding: 10px 16px !important;
   font-weight: 700 !important;
-  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4) !important;
-  border: 2px solid rgba(255, 255, 255, 0.5) !important;
-  font-size: 0.875rem !important;
+  box-shadow: 0 8px 28px rgba(217, 119, 6, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.9rem !important;
+  color: white !important;
+  z-index: 1000 !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
 }
 
 .journey-tooltip .leaflet-tooltip-arrow {
   border-top-color: #d97706 !important;
+  border-top-width: 8px !important;
+}
+
+.leaflet-tooltip {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.leaflet-tooltip.leaflet-tooltip-right {
+  margin-left: 8px !important;
+}
+
+.leaflet-tooltip.leaflet-tooltip-left {
+  margin-right: 8px !important;
 }
 
 /* Glass Morphism Effects */
