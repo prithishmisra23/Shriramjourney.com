@@ -405,25 +405,64 @@ export default function Timeline() {
         </div>
 
         {/* Key Lessons */}
-        <Card className="border-amber-200 mt-12">
-          <CardContent className="pt-6">
-            <h2 className="font-playfair font-bold text-2xl text-amber-950 mb-6">Key Lessons from the Timeline</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card className="border-4 border-amber-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 mt-14 shadow-2xl">
+          <CardContent className="pt-10 pb-10 px-10">
+            <h2 className="font-playfair font-bold text-4xl text-amber-950 mb-2 flex items-center gap-3">
+              <span className="text-5xl">🎓</span> Key Wisdom from the Timeline
+            </h2>
+            <p className="text-amber-800 mb-8 max-w-3xl">
+              Timeless spiritual lessons and moral teachings woven throughout Ram's divine journey
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                "Dharma always prevails over adharma (righteousness over evil)",
-                "Unwavering devotion to duty leads to spiritual perfection",
-                "Sacrifice and duty are higher than personal comfort",
-                "Love and faith are eternal and indestructible",
-                "Evil contains the seeds of its own destruction",
-                "The divine works through human actions and dedication"
-              ].map((lesson, idx) => (
-                <div key={idx} className="p-3 bg-amber-50 rounded border-l-4 border-amber-700">
-                  <p className="text-sm text-amber-900">✨ {lesson}</p>
+                { icon: "⚖️", lesson: "Dharma prevails over adharma", desc: "Righteousness always triumphs over evil in the end" },
+                { icon: "🙏", lesson: "Unwavering devotion to duty", desc: "Spiritual perfection comes through dedication and sacrifice" },
+                { icon: "💪", lesson: "Sacrifice exceeds comfort", desc: "Personal desires must yield to righteous duty and dharma" },
+                { icon: "💕", lesson: "Love & faith are eternal", desc: "True love and devotion transcend all obstacles and time" },
+                { icon: "☠️", lesson: "Evil self-destructs", desc: "Wickedness contains the seeds of its own downfall" },
+                { icon: "✨", lesson: "Divine works through humans", desc: "God's purpose manifests through human dedication and action" }
+              ].map((item, idx) => (
+                <div key={idx} className="p-6 bg-gradient-to-br from-white to-amber-50 rounded-2xl border-2 border-amber-200 hover:shadow-2xl hover:-translate-y-1 transition-all group cursor-pointer">
+                  <p className="text-5xl mb-3 group-hover:scale-125 transition-transform">{item.icon}</p>
+                  <p className="font-bold text-amber-950 text-lg mb-2">{item.lesson}</p>
+                  <p className="text-sm text-amber-800 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
+
+        {/* Conclusion Section */}
+        <div className="mt-16 bg-gradient-to-r from-purple-700 via-purple-800 to-indigo-900 text-white rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
+          </div>
+          <div className="relative z-10">
+            <h2 className="font-playfair font-bold text-3xl md:text-4xl mb-6 leading-tight">
+              The Eternal Legacy of Ram Rajya
+            </h2>
+            <p className="text-lg text-purple-100 leading-relaxed max-w-4xl mb-6">
+              The Ramayana timeline encompasses more than historical events—it represents the eternal struggle between dharma and adharma, duty and desire, sacrifice and selfishness. Through Ram's journey, we discover the timeless principles of righteous living, divine grace, and the ultimate triumph of spiritual truth over material illusions.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                <p className="text-4xl mb-2">🌟</p>
+                <p className="font-bold text-lg mb-2">Spiritual Transformation</p>
+                <p className="text-sm text-purple-200">Journey through trials that purify the soul and elevate consciousness</p>
+              </div>
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                <p className="text-4xl mb-2">🎯</p>
+                <p className="font-bold text-lg mb-2">Dharmic Purpose</p>
+                <p className="text-sm text-purple-200">Understand your role in the cosmic order and righteous duty</p>
+              </div>
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                <p className="text-4xl mb-2">♾️</p>
+                <p className="font-bold text-lg mb-2">Eternal Truth</p>
+                <p className="text-sm text-purple-200">Timeless wisdom applicable to modern life and spiritual growth</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />
