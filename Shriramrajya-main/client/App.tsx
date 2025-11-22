@@ -61,6 +61,9 @@ const App = () => (
           <Route path="/offline-mode" element={<OfflineMode />} />
           <Route path="/ar-vr-walk" element={<ARVRWalk />} />
           <Route path="/livestreams" element={<DarshanLivestreams />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
