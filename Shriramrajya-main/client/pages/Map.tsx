@@ -202,32 +202,26 @@ export default function MapPage() {
         </div>
 
         {/* Statistics & Info Panels */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-red-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
-            <p className="text-4xl font-bold bg-gradient-text mb-2">
-              {filteredLocations.length}
-            </p>
-            <p className="text-sm font-bold text-amber-900">
-              Locations Shown
-            </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <Card className="border-3 border-red-300 bg-gradient-to-br from-red-50 via-red-100 to-orange-50 p-8 text-center hover:shadow-2xl transition-all hover:scale-110 hover:-translate-y-2 cursor-pointer">
+            <p className="text-5xl font-bold text-red-600 mb-3">{filteredLocations.length}</p>
+            <p className="text-sm font-bold text-red-900">Locations Displayed</p>
+            <p className="text-xs text-red-700 mt-2 opacity-75">Currently Filtered</p>
           </Card>
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
-            <p className="text-4xl font-bold bg-gradient-text mb-2">
-              {ramLocations.length}
-            </p>
-            <p className="text-sm font-bold text-amber-900">
-              Total Locations
-            </p>
+          <Card className="border-3 border-yellow-300 bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-50 p-8 text-center hover:shadow-2xl transition-all hover:scale-110 hover:-translate-y-2 cursor-pointer">
+            <p className="text-5xl font-bold text-yellow-600 mb-3">{ramLocations.length}</p>
+            <p className="text-sm font-bold text-yellow-900">Total Locations</p>
+            <p className="text-xs text-yellow-700 mt-2 opacity-75">Complete Journey</p>
           </Card>
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-green-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
-            <p className="text-4xl font-bold bg-gradient-text mb-2">6</p>
-            <p className="text-sm font-bold text-amber-900">
-              Journey Phases
-            </p>
+          <Card className="border-3 border-blue-300 bg-gradient-to-br from-blue-50 via-blue-100 to-cyan-50 p-8 text-center hover:shadow-2xl transition-all hover:scale-110 hover:-translate-y-2 cursor-pointer">
+            <p className="text-5xl font-bold text-blue-600 mb-3">6</p>
+            <p className="text-sm font-bold text-blue-900">Journey Phases</p>
+            <p className="text-xs text-blue-700 mt-2 opacity-75">Life Chapters</p>
           </Card>
-          <Card className="border-2 border-amber-200 bg-gradient-to-br from-blue-50 via-amber-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105">
-            <p className="text-4xl font-bold bg-gradient-text mb-2">2</p>
-            <p className="text-sm font-bold text-amber-900">Countries</p>
+          <Card className="border-3 border-purple-300 bg-gradient-to-br from-purple-50 via-purple-100 to-pink-50 p-8 text-center hover:shadow-2xl transition-all hover:scale-110 hover:-translate-y-2 cursor-pointer">
+            <p className="text-5xl font-bold text-purple-600 mb-3">2</p>
+            <p className="text-sm font-bold text-purple-900">Nations</p>
+            <p className="text-xs text-purple-700 mt-2 opacity-75">India & Sri Lanka</p>
           </Card>
         </div>
 
