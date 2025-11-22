@@ -176,11 +176,25 @@ export function InteractiveMap({
       marker.on("click", () => {
         setSelectedMarker(location);
         onLocationSelect?.(location);
+        map.current.setView([location.latitude, location.longitude], 10, { animate: true });
       });
 
-      // Tooltip on hover with location number
-      const tooltipText = isStart ? "🚩 START: Ayodhya" : isEnd ? "✓ END: Return to Ayodhya" : `${index + 1}. ${location.name}`;
-      marker.bindTooltip(tooltipText, { permanent: false, direction: "top", className: "journey-tooltip" });
+      marker.on("mouseover", function() {
+        this.openTooltip();
+      });
+
+      marker.on("mouseout", function() {
+        this.closeTooltip();
+      });
+
+      // Tooltip on hover with location details
+      const tooltipText = isStart ? "🚩 START: Ayodhya" : isEnd ? "✓ END: Return to Ayodhya" : `${String(index + 1).padStart(2, '0')}. ${location.name}`;
+      marker.bindTooltip(tooltipText, {
+        permanent: false,
+        direction: "top",
+        className: "journey-tooltip",
+        offset: [0, -15]
+      });
     });
 
     // Draw the journey line - main route
