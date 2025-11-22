@@ -58,16 +58,27 @@ export function InteractiveMap({
 
     const L = window.L;
 
-    // Center of India (roughly middle of Ram's journey)
-    const center = [22.5, 80];
+    // Center on northern India, covering the entire journey route
+    const center = [23.5, 80.5];
+    const initialZoom = 5;
 
-    map.current = L.map(mapContainer.current).setView(center, 5);
+    map.current = L.map(mapContainer.current, {
+      scrollWheelZoom: true,
+      trackResize: true,
+    }).setView(center, initialZoom);
 
-    // Add tile layer
+    // Add tile layer with better styling
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
+      minZoom: 4,
+      className: "map-tiles",
+    }).addTo(map.current);
+
+    // Add a subtle zoom control
+    L.control.zoom({
+      position: "topright",
     }).addTo(map.current);
 
     setMapReady(true);
@@ -83,7 +94,7 @@ export function InteractiveMap({
       }
     });
 
-    // Define the correct journey order (50 locations)
+    // Define the correct journey order (45 sacred locations)
     const journeyOrder = [
       "ayodhya-birth", "sarayu-river", "vashistha-ashram", "janakpur", "sita-kund",
       "palace-gate", "tamasa-river", "shringaverpur", "bharadwaj-ashram", "prayagraj",
@@ -125,35 +136,36 @@ export function InteractiveMap({
       const isStart = index === 0;
       const isEnd = index === orderedLocations.length - 1;
 
-      let html = "";
+      // Create marker element
+      const markerEl = document.createElement("div");
+      markerEl.style.cssText = "display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: 900; border-radius: 50%; border: 5px solid white; font-family: 'Playfair Display', serif;";
+      markerEl.style.width = "64px";
+      markerEl.style.height = "64px";
+      markerEl.style.fontSize = isStart || isEnd ? "32px" : "24px";
 
       if (isStart) {
-        html = `
-          <div style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.6), inset 0 1px 2px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; position: relative;">
-            🚩
-            <div style="position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(22, 163, 74, 0.3); animation: pulse 2s infinite;"></div>
-          </div>
-        `;
+        markerEl.style.background = "linear-gradient(135deg, #16a34a 0%, #15803d 100%)";
+        markerEl.style.boxShadow = "0 4px 12px rgba(22, 163, 74, 0.7), 0 0 0 3px rgba(22, 163, 74, 0.3)";
+        markerEl.textContent = "🚩";
       } else if (isEnd) {
-        html = `
-          <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px rgba(220, 38, 38, 0.6), inset 0 1px 2px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; position: relative;">
-            ✓
-            <div style="position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(220, 38, 38, 0.3); animation: pulse 2s infinite;"></div>
-          </div>
-        `;
+        markerEl.style.background = "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)";
+        markerEl.style.boxShadow = "0 4px 12px rgba(220, 38, 38, 0.7), 0 0 0 3px rgba(220, 38, 38, 0.3)";
+        markerEl.style.color = "white";
+        markerEl.textContent = "✓";
       } else {
-        html = `
-          <div style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); color: white; padding: 0; border-radius: 50%; font-weight: 900; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px ${color}99, inset 0 2px 4px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-            ${index + 1}
-          </div>
-        `;
+        markerEl.style.background = `linear-gradient(135deg, ${color} 0%, ${color}dd 100%)`;
+        markerEl.style.boxShadow = `0 4px 12px ${color}99, 0 0 0 3px ${color}40`;
+        markerEl.style.color = "white";
+        markerEl.style.textShadow = "0 2px 4px rgba(0,0,0,0.3)";
+        markerEl.textContent = String(index + 1).padStart(2, "0");
       }
 
       const marker = L.marker([location.latitude, location.longitude], {
         icon: L.divIcon({
-          html,
-          iconSize: isStart || isEnd ? [48, 48] : [38, 38],
-          className: "custom-marker",
+          html: markerEl.outerHTML,
+          iconSize: [64, 64],
+          popupAnchor: [0, -32],
+          className: "custom-marker location-marker",
         }),
       }).addTo(map.current);
 
@@ -161,46 +173,68 @@ export function InteractiveMap({
       marker.on("click", () => {
         setSelectedMarker(location);
         onLocationSelect?.(location);
+        map.current.setView([location.latitude, location.longitude], 10, { animate: true });
       });
 
-      // Tooltip on hover with location number
-      const tooltipText = isStart ? "🚩 START: Ayodhya" : isEnd ? "✓ END: Return to Ayodhya" : `${index + 1}. ${location.name}`;
-      marker.bindTooltip(tooltipText, { permanent: false, direction: "top", className: "journey-tooltip" });
+      marker.on("mouseover", function() {
+        this.openTooltip();
+      });
+
+      marker.on("mouseout", function() {
+        this.closeTooltip();
+      });
+
+      // Tooltip on hover with location details
+      const tooltipText = isStart ? "🚩 START: Ayodhya" : isEnd ? "✓ END: Return to Ayodhya" : `${String(index + 1).padStart(2, '0')}. ${location.name}`;
+      marker.bindTooltip(tooltipText, {
+        permanent: false,
+        direction: "top",
+        className: "journey-tooltip",
+        offset: [0, -15]
+      });
     });
 
     // Draw the journey line - main route
     if (coordinates.length > 0) {
-      // Shadow/glow layer
+      // Outer glow layer for depth
       L.polyline(coordinates, {
         color: "#fbbf24",
-        weight: 8,
-        opacity: 0.3,
+        weight: 12,
+        opacity: 0.25,
         lineCap: "round",
         lineJoin: "round",
       }).addTo(map.current);
 
-      // Main route line
-      L.polyline(coordinates, {
-        color: "#d97706",
-        weight: 4,
-        opacity: 0.85,
-        lineCap: "round",
-        lineJoin: "round",
-      }).addTo(map.current);
-
-      // Highlight line
+      // Mid-tone shadow layer
       L.polyline(coordinates, {
         color: "#f59e0b",
-        weight: 2,
-        opacity: 0.6,
+        weight: 8,
+        opacity: 0.4,
         lineCap: "round",
         lineJoin: "round",
-        dashArray: "10, 5",
       }).addTo(map.current);
 
-      // Auto-fit map to show all markers with padding
+      // Primary golden route line
+      L.polyline(coordinates, {
+        color: "#d97706",
+        weight: 5,
+        opacity: 0.9,
+        lineCap: "round",
+        lineJoin: "round",
+      }).addTo(map.current);
+
+      // Accent highlight line with animation
+      L.polyline(coordinates, {
+        color: "#fbbf24",
+        weight: 2.5,
+        opacity: 0.7,
+        lineCap: "round",
+        lineJoin: "round",
+      }).addTo(map.current);
+
+      // Auto-fit map to show all markers with adequate padding
       const bounds = L.latLngBounds(coordinates);
-      map.current.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 });
+      map.current.fitBounds(bounds, { padding: [80, 80], maxZoom: 7 });
     }
   };
 
@@ -214,11 +248,11 @@ export function InteractiveMap({
       />
 
       {/* Legend */}
-      <Card className="border-3 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-xl">
+      <Card className="border-4 border-amber-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-2xl">
         <div className="p-8 space-y-8">
           <div>
-            <p className="font-playfair font-bold text-amber-950 mb-6 text-2xl flex items-center gap-2">
-              🗺️ Journey Markers Guide
+            <p className="font-playfair font-bold text-amber-950 mb-8 text-3xl flex items-center gap-3">
+              <span className="text-4xl">🗺️</span> Sacred Journey Markers Guide
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm mb-6">
               <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl border-2 border-green-400 shadow-md">
@@ -255,31 +289,34 @@ export function InteractiveMap({
           </div>
 
           <div>
-            <p className="font-playfair font-bold text-amber-950 mb-6 text-2xl flex items-center gap-2">
-              🎨 Six Phases of the Divine Journey
+            <p className="font-playfair font-bold text-amber-950 mb-8 text-3xl flex items-center gap-3">
+              <span className="text-4xl">🎨</span> Six Sacred Phases
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 text-sm">
               {[
-                { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶", description: "Ayodhya" },
-                { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶", description: "Exile Starts" },
-                { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲", description: "Forests" },
-                { phase: "Search for Sita", color: "#22c55e", emoji: "🔍", description: "Quest" },
-                { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑", description: "Victory" },
-                { phase: "Post-Coronation", color: "#a855f7", emoji: "✨", description: "Legacy" },
+                { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶", description: "Ayodhya Birth", locations: "1-5" },
+                { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶", description: "Exile Starts", locations: "6-10" },
+                { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲", description: "Forests", locations: "16-20" },
+                { phase: "Search for Sita", color: "#22c55e", emoji: "🔍", description: "Quest Phase", locations: "21-30" },
+                { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑", description: "Victory", locations: "31-40" },
+                { phase: "Post-Coronation", color: "#a855f7", emoji: "✨", description: "Legacy", locations: "41-45" },
               ].map((item) => (
                 <div
                   key={item.phase}
-                  className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-white to-amber-100 rounded-xl border-2 transition-all hover:shadow-lg hover:scale-105"
+                  className="flex flex-col items-center gap-3 p-5 bg-gradient-to-br from-white to-amber-100 rounded-xl border-3 transition-all hover:shadow-xl hover:scale-105 hover:-translate-y-1"
                   style={{ borderColor: item.color }}
                 >
-                  <span className="text-3xl">{item.emoji}</span>
+                  <span className="text-4xl">{item.emoji}</span>
                   <div
-                    className="w-6 h-6 rounded-full border-3 border-white shadow-lg"
-                    style={{ backgroundColor: item.color, boxShadow: `0 0 10px ${item.color}80` }}
+                    className="w-8 h-8 rounded-full border-4 border-white shadow-lg"
+                    style={{ backgroundColor: item.color, boxShadow: `0 0 15px ${item.color}99, inset 0 0 8px rgba(255,255,255,0.5)` }}
                     title={item.phase}
                   />
-                  <span className="text-amber-900 font-bold text-xs text-center">
+                  <span className="text-amber-900 font-bold text-xs text-center leading-tight">
                     {item.description}
+                  </span>
+                  <span className="text-amber-700 text-xs opacity-75">
+                    #{item.locations}
                   </span>
                 </div>
               ))}
@@ -290,8 +327,8 @@ export function InteractiveMap({
 
       {/* Info Panels */}
       {selectedMarker && (
-        <Card className="border-3 border-amber-300 bg-gradient-to-br from-white via-amber-50 to-orange-50 shadow-2xl">
-          <div className="p-6 space-y-5">
+        <Card className="border-4 border-amber-400 bg-gradient-to-br from-white via-amber-50 to-orange-50 shadow-2xl">
+          <div className="p-8 space-y-6">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <h3 className="font-playfair font-bold text-amber-950 text-2xl mb-2">
@@ -316,15 +353,15 @@ export function InteractiveMap({
               {selectedMarker.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-3 text-sm">
-              <div className="p-3 bg-gradient-to-br from-white to-amber-100 rounded-lg border-2 border-amber-300 shadow-md">
-                <p className="text-amber-700 font-bold text-xs mb-1">🗓️ BEST TIME</p>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="p-4 bg-gradient-to-br from-white to-amber-100 rounded-lg border-2 border-amber-300 shadow-md hover:shadow-lg transition-all">
+                <p className="text-amber-700 font-bold text-xs mb-2">🗓️ BEST TIME TO VISIT</p>
                 <p className="text-amber-900 font-semibold">
                   {selectedMarker.bestTimeToVisit}
                 </p>
               </div>
-              <div className="p-3 bg-gradient-to-br from-white to-orange-100 rounded-lg border-2 border-orange-300 shadow-md">
-                <p className="text-orange-700 font-bold text-xs mb-1">🏙️ NEAREST CITY</p>
+              <div className="p-4 bg-gradient-to-br from-white to-orange-100 rounded-lg border-2 border-orange-300 shadow-md hover:shadow-lg transition-all">
+                <p className="text-orange-700 font-bold text-xs mb-2">🏙️ NEAREST CITY</p>
                 <p className="text-amber-900 font-semibold">{selectedMarker.nearestCity}</p>
               </div>
             </div>
@@ -342,10 +379,10 @@ export function InteractiveMap({
       )}
 
       {/* Map Info */}
-      <Card className="border-3 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-lg">
-        <div className="p-8 space-y-6">
-          <p className="font-playfair font-bold text-amber-950 text-2xl flex items-center gap-2">
-            📍 Complete Map Features
+      <Card className="border-4 border-amber-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-2xl">
+        <div className="p-8 space-y-8">
+          <p className="font-playfair font-bold text-amber-950 text-3xl flex items-center gap-3">
+            <span className="text-4xl">📍</span> Complete Map Features
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ul className="text-base text-amber-900 space-y-3">
