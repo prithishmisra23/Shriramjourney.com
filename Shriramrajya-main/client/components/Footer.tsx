@@ -186,17 +186,14 @@ export function Footer() {
               reserved. Made with 🙏 for devotees of Shri Ram
             </p>
             <div className="flex gap-6 flex-wrap justify-center md:justify-end">
-              <Link to="/" className="hover:text-white transition">
+              <Link to="/privacy" className="hover:text-white transition">
                 Privacy Policy
               </Link>
-              <Link to="/" className="hover:text-white transition">
+              <Link to="/terms" className="hover:text-white transition">
                 Terms of Service
               </Link>
-              <Link to="/" className="hover:text-white transition">
+              <Link to="/contact" className="hover:text-white transition">
                 Contact Us
-              </Link>
-              <Link to="/" className="hover:text-white transition">
-                Sitemap
               </Link>
             </div>
           </div>

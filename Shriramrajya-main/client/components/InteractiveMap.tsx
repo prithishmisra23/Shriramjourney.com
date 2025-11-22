@@ -143,7 +143,7 @@ export function InteractiveMap({
         `;
       } else {
         html = `
-          <div style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); color: white; padding: 0; border-radius: 50%; font-weight: bold; font-size: 13px; border: 3px solid white; box-shadow: 0 3px 12px ${color}80; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif;">
+          <div style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); color: white; padding: 0; border-radius: 50%; font-weight: 900; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px ${color}99, inset 0 2px 4px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
             ${index + 1}
           </div>
         `;
@@ -197,6 +197,10 @@ export function InteractiveMap({
         lineJoin: "round",
         dashArray: "10, 5",
       }).addTo(map.current);
+
+      // Auto-fit map to show all markers with padding
+      const bounds = L.latLngBounds(coordinates);
+      map.current.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 });
     }
   };
 
