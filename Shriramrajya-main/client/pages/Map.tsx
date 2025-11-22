@@ -232,39 +232,81 @@ export default function MapPage() {
         </div>
 
         {/* Help & Tips Section */}
-        <Card className="border-3 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-8 shadow-lg">
-          <p className="font-playfair font-bold text-amber-950 text-2xl mb-6 flex items-center gap-2">
-            💡 How to Use This Sacred Map
+        <Card className="border-4 border-amber-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-10 shadow-2xl">
+          <p className="font-playfair font-bold text-amber-950 text-3xl mb-8 flex items-center gap-3">
+            <span className="text-4xl">💡</span> How to Use This Sacred Map
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-base">
-            <ul className="space-y-3 text-amber-900">
-              <li className="flex items-start gap-3">
-                <span className="text-lg mt-1">✓</span>
-                <span><strong>Click markers</strong> to view detailed location history and significance</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-lg mt-1">✓</span>
-                <span><strong>Zoom & pan</strong> to explore sacred regions and geographical details</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-lg mt-1">✓</span>
-                <span><strong>Color-coded pins</strong> represent different journey phases (red, orange, yellow, green, blue, purple)</span>
-              </li>
-            </ul>
-            <ul className="space-y-3 text-amber-900">
-              <li className="flex items-start gap-3">
-                <span className="text-lg mt-1">✓</span>
-                <span><strong>Search</strong> specific locations by name or state to find them instantly</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-lg mt-1">✓</span>
-                <span><strong>Filter by phase</strong> to focus on specific chapters of Ram's divine journey</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-lg mt-1">✓</span>
-                <span><strong>Golden route line</strong> traces the complete pilgrimage path from start to end</span>
-              </li>
-            </ul>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl border-l-4 border-red-500 hover:shadow-md transition-all">
+                <span className="text-3xl">🎯</span>
+                <div>
+                  <p className="font-bold text-amber-950">Click Location Markers</p>
+                  <p className="text-sm text-amber-800 mt-1">View detailed history, spiritual significance, best visiting times, and nearby facilities</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl border-l-4 border-orange-500 hover:shadow-md transition-all">
+                <span className="text-3xl">🔍</span>
+                <div>
+                  <p className="font-bold text-amber-950">Zoom & Explore</p>
+                  <p className="text-sm text-amber-800 mt-1">Use mouse wheel or pinch zoom to explore specific regions and see geographical details</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl border-l-4 border-yellow-500 hover:shadow-md transition-all">
+                <span className="text-3xl">🗺️</span>
+                <div>
+                  <p className="font-bold text-amber-950">Color-Coded Phases</p>
+                  <p className="text-sm text-amber-800 mt-1">Red = Birth, Orange = Exile, Yellow = Forest, Green = Search, Blue = Victory, Purple = Legacy</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl border-l-4 border-green-500 hover:shadow-md transition-all">
+                <span className="text-3xl">🔎</span>
+                <div>
+                  <p className="font-bold text-amber-950">Smart Search</p>
+                  <p className="text-sm text-amber-800 mt-1">Find any location instantly by name, state, or phrase (e.g., "temples", "river")</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl border-l-4 border-blue-500 hover:shadow-md transition-all">
+                <span className="text-3xl">🎨</span>
+                <div>
+                  <p className="font-bold text-amber-950">Phase Filtering</p>
+                  <p className="text-sm text-amber-800 mt-1">Focus on specific chapters of Ram's journey to understand narrative flow and timeline</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl border-l-4 border-purple-500 hover:shadow-md transition-all">
+                <span className="text-3xl">✨</span>
+                <div>
+                  <p className="font-bold text-amber-950">Golden Route</p>
+                  <p className="text-sm text-amber-800 mt-1">Follow the illuminated path connecting all 45 locations in the correct sacred journey sequence</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Advanced Features */}
+          <div className="mt-10 pt-10 border-t-2 border-amber-200">
+            <p className="font-playfair font-bold text-amber-950 text-2xl mb-6 flex items-center gap-2">
+              ⭐ Advanced Map Features
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border-2 border-blue-300">
+                <p className="text-2xl mb-2">📊</p>
+                <p className="font-bold text-blue-950 mb-2">Journey Statistics</p>
+                <p className="text-sm text-blue-800">View detailed metrics about distances, durations, and spiritual significance of each location</p>
+              </div>
+              <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border-2 border-green-300">
+                <p className="text-2xl mb-2">🌍</p>
+                <p className="font-bold text-green-950 mb-2">Geographic Insights</p>
+                <p className="text-sm text-green-800">Learn about terrain, altitude, climate, and modern accessibility of each sacred site</p>
+              </div>
+              <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border-2 border-purple-300">
+                <p className="text-2xl mb-2">🏆</p>
+                <p className="font-bold text-purple-950 mb-2">Pilgrimage Planning</p>
+                <p className="text-sm text-purple-800">Create custom routes, estimate travel times, and plan your sacred journey efficiently</p>
+              </div>
+            </div>
           </div>
         </Card>
       </div>
