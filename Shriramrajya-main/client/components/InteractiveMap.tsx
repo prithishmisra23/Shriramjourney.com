@@ -274,31 +274,34 @@ export function InteractiveMap({
           </div>
 
           <div>
-            <p className="font-playfair font-bold text-amber-950 mb-6 text-2xl flex items-center gap-2">
-              🎨 Six Phases of the Divine Journey
+            <p className="font-playfair font-bold text-amber-950 mb-8 text-3xl flex items-center gap-3">
+              <span className="text-4xl">🎨</span> Six Sacred Phases
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 text-sm">
               {[
-                { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶", description: "Ayodhya" },
-                { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶", description: "Exile Starts" },
-                { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲", description: "Forests" },
-                { phase: "Search for Sita", color: "#22c55e", emoji: "🔍", description: "Quest" },
-                { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑", description: "Victory" },
-                { phase: "Post-Coronation", color: "#a855f7", emoji: "✨", description: "Legacy" },
+                { phase: "Birth & Early Life", color: "#dc2626", emoji: "👶", description: "Ayodhya Birth", locations: "1-5" },
+                { phase: "Vanvās Begins", color: "#f97316", emoji: "🚶", description: "Exile Starts", locations: "6-10" },
+                { phase: "Deep Forest Journey", color: "#eab308", emoji: "🌲", description: "Forests", locations: "16-20" },
+                { phase: "Search for Sita", color: "#22c55e", emoji: "🔍", description: "Quest Phase", locations: "21-30" },
+                { phase: "Return & Coronation", color: "#3b82f6", emoji: "👑", description: "Victory", locations: "31-40" },
+                { phase: "Post-Coronation", color: "#a855f7", emoji: "✨", description: "Legacy", locations: "41-45" },
               ].map((item) => (
                 <div
                   key={item.phase}
-                  className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br from-white to-amber-100 rounded-xl border-2 transition-all hover:shadow-lg hover:scale-105"
+                  className="flex flex-col items-center gap-3 p-5 bg-gradient-to-br from-white to-amber-100 rounded-xl border-3 transition-all hover:shadow-xl hover:scale-105 hover:-translate-y-1"
                   style={{ borderColor: item.color }}
                 >
-                  <span className="text-3xl">{item.emoji}</span>
+                  <span className="text-4xl">{item.emoji}</span>
                   <div
-                    className="w-6 h-6 rounded-full border-3 border-white shadow-lg"
-                    style={{ backgroundColor: item.color, boxShadow: `0 0 10px ${item.color}80` }}
+                    className="w-8 h-8 rounded-full border-4 border-white shadow-lg"
+                    style={{ backgroundColor: item.color, boxShadow: `0 0 15px ${item.color}99, inset 0 0 8px rgba(255,255,255,0.5)` }}
                     title={item.phase}
                   />
-                  <span className="text-amber-900 font-bold text-xs text-center">
+                  <span className="text-amber-900 font-bold text-xs text-center leading-tight">
                     {item.description}
+                  </span>
+                  <span className="text-amber-700 text-xs opacity-75">
+                    #{item.locations}
                   </span>
                 </div>
               ))}
