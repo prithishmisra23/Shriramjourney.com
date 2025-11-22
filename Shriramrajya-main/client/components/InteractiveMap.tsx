@@ -136,23 +136,35 @@ export function InteractiveMap({
       const isStart = index === 0;
       const isEnd = index === orderedLocations.length - 1;
 
-      let html = "";
-      let iconSize = [64, 64];
-      let popupAnchor = [0, -32];
+      // Create marker element
+      const markerEl = document.createElement("div");
+      markerEl.style.cssText = "display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: 900; border-radius: 50%; border: 5px solid white; font-family: 'Playfair Display', serif;";
+      markerEl.style.width = "64px";
+      markerEl.style.height = "64px";
+      markerEl.style.fontSize = isStart || isEnd ? "32px" : "24px";
 
       if (isStart) {
-        html = `<div style="width: 64px; height: 64px; background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); border: 5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.7), 0 0 0 3px rgba(22, 163, 74, 0.3); cursor: pointer; font-weight: bold;">🚩</div>`;
+        markerEl.style.background = "linear-gradient(135deg, #16a34a 0%, #15803d 100%)";
+        markerEl.style.boxShadow = "0 4px 12px rgba(22, 163, 74, 0.7), 0 0 0 3px rgba(22, 163, 74, 0.3)";
+        markerEl.textContent = "🚩";
       } else if (isEnd) {
-        html = `<div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); border: 5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.7), 0 0 0 3px rgba(220, 38, 38, 0.3); cursor: pointer; font-weight: bold;">✓</div>`;
+        markerEl.style.background = "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)";
+        markerEl.style.boxShadow = "0 4px 12px rgba(220, 38, 38, 0.7), 0 0 0 3px rgba(220, 38, 38, 0.3)";
+        markerEl.style.color = "white";
+        markerEl.textContent = "✓";
       } else {
-        html = `<div style="width: 64px; height: 64px; background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); border: 5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 12px ${color}99, 0 0 0 3px ${color}40; cursor: pointer; font-weight: 900; font-family: 'Playfair Display', serif; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">${String(index + 1).padStart(2, '0')}</div>`;
+        markerEl.style.background = `linear-gradient(135deg, ${color} 0%, ${color}dd 100%)`;
+        markerEl.style.boxShadow = `0 4px 12px ${color}99, 0 0 0 3px ${color}40`;
+        markerEl.style.color = "white";
+        markerEl.style.textShadow = "0 2px 4px rgba(0,0,0,0.3)";
+        markerEl.textContent = String(index + 1).padStart(2, "0");
       }
 
       const marker = L.marker([location.latitude, location.longitude], {
         icon: L.divIcon({
-          html: html,
-          iconSize: iconSize,
-          popupAnchor: popupAnchor,
+          html: markerEl.outerHTML,
+          iconSize: [64, 64],
+          popupAnchor: [0, -32],
           className: "custom-marker location-marker",
         }),
       }).addTo(map.current);
