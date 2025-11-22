@@ -233,17 +233,54 @@ export default function Timeline() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50">
       <Navigation />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+        {/* Hero Section */}
+        <div className="mb-16 bg-gradient-to-br from-amber-700 via-amber-800 to-amber-950 text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.4),transparent_50%)]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.3),transparent_50%)]"></div>
+          </div>
+          <div className="relative z-10">
+            <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold mb-4 border border-white/30">
+              📖 EPIC NARRATIVE
+            </div>
+            <h1 className="font-playfair font-bold text-5xl md:text-7xl mb-6 leading-tight">
+              The Ramayana<br/>Timeline
+            </h1>
+            <p className="text-lg md:text-xl text-amber-100 max-w-3xl leading-relaxed">
+              A chronological journey through <span className="font-bold text-white">7 pivotal phases</span> of Shri Ram's divine life, spanning his birth, trials, victories, and eternal legacy. Discover the <span className="font-bold text-white">spiritual significance</span> of each moment.
+            </p>
+            <div className="mt-8 p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+              <p className="text-sm text-amber-100">
+                <span className="font-bold">Total Events:</span> {timeline.reduce((sum, phase) => sum + phase.events.length, 0)} significant moments across the divine narrative
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Phase Progress Bar */}
         <div className="mb-12">
-          <h1 className="font-playfair font-bold text-5xl text-amber-950 mb-4">
-            The Ramayana Timeline
-          </h1>
-          <p className="text-xl text-amber-900">
-            A journey through the seven phases of Shri Ram's divine life
-          </p>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-playfair font-bold text-2xl text-amber-950 flex items-center gap-2">
+              <span className="text-3xl">📍</span> Journey Progress
+            </h2>
+            <p className="text-sm font-bold text-amber-700 bg-amber-100 px-4 py-2 rounded-full">
+              {timeline.length} Phases • {timeline.reduce((sum, phase) => sum + phase.events.length, 0)} Events
+            </p>
+          </div>
+          <div className="w-full bg-gradient-to-r from-amber-100 to-orange-100 rounded-full h-3 shadow-md border-2 border-amber-200 overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-red-600 via-orange-500 to-purple-600 rounded-full transition-all duration-500"
+              style={{ width: `${(expandedPhase ? expandedPhase + 1 : 0) / timeline.length * 100}%` }}
+            ></div>
+          </div>
+          <div className="mt-3 flex justify-between text-xs font-bold text-amber-700">
+            <span>Birth & Early Life</span>
+            <span>Ram Rajya & Legacy</span>
+          </div>
         </div>
 
         {/* Timeline */}
