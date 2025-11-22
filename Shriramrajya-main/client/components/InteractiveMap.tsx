@@ -338,15 +338,15 @@ export function InteractiveMap({
               {selectedMarker.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-3 text-sm">
-              <div className="p-3 bg-gradient-to-br from-white to-amber-100 rounded-lg border-2 border-amber-300 shadow-md">
-                <p className="text-amber-700 font-bold text-xs mb-1">🗓️ BEST TIME</p>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="p-4 bg-gradient-to-br from-white to-amber-100 rounded-lg border-2 border-amber-300 shadow-md hover:shadow-lg transition-all">
+                <p className="text-amber-700 font-bold text-xs mb-2">🗓️ BEST TIME TO VISIT</p>
                 <p className="text-amber-900 font-semibold">
                   {selectedMarker.bestTimeToVisit}
                 </p>
               </div>
-              <div className="p-3 bg-gradient-to-br from-white to-orange-100 rounded-lg border-2 border-orange-300 shadow-md">
-                <p className="text-orange-700 font-bold text-xs mb-1">🏙️ NEAREST CITY</p>
+              <div className="p-4 bg-gradient-to-br from-white to-orange-100 rounded-lg border-2 border-orange-300 shadow-md hover:shadow-lg transition-all">
+                <p className="text-orange-700 font-bold text-xs mb-2">🏙️ NEAREST CITY</p>
                 <p className="text-amber-900 font-semibold">{selectedMarker.nearestCity}</p>
               </div>
             </div>
