@@ -98,59 +98,96 @@ export default function MapPage() {
         </div>
 
         {/* Search & Filters Section */}
-        <div className="mb-8 space-y-6 bg-gradient-to-br from-white to-amber-50 rounded-3xl p-8 shadow-lg border border-amber-100">
+        <div className="mb-8 space-y-8 bg-gradient-to-br from-white to-amber-50 rounded-3xl p-8 md:p-10 shadow-lg border-2 border-amber-100">
           {/* Search Bar */}
           <div>
-            <label className="block text-sm font-bold text-amber-950 mb-4 flex items-center gap-2">
-              <Search className="w-5 h-5 text-amber-700" />
-              Search Sacred Locations
+            <label className="block text-base font-bold text-amber-950 mb-4 flex items-center gap-3">
+              <Search className="w-6 h-6 text-amber-700" />
+              🔍 Search Sacred Locations
             </label>
-            <div className="relative">
+            <div className="relative group">
               <Input
-                placeholder="Search by location name or state (e.g., Ayodhya, Varanasi)..."
+                placeholder="🏛️ Search by location name (Ayodhya, Varanasi, Rameswaram...) or state..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-4 py-4 border-2 border-amber-300 focus:border-amber-700 rounded-xl text-base font-medium transition-all"
+                className="w-full pl-5 pr-12 py-4 border-2 border-amber-300 focus:border-amber-700 focus:ring-2 focus:ring-amber-300 rounded-xl text-base font-medium transition-all placeholder:text-amber-400"
               />
-              <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-amber-400 w-5 h-5 opacity-50" />
+              <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-amber-400 w-5 h-5 opacity-70 group-focus-within:opacity-100 transition-opacity" />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-14 top-1/2 transform -translate-y-1/2 text-amber-600 hover:text-amber-800 font-bold text-xl transition-colors"
+                >
+                  ✕
+                </button>
+              )}
             </div>
+            {searchTerm && (
+              <p className="text-sm text-amber-700 mt-3 flex items-center gap-2">
+                ✓ Found <span className="font-bold text-amber-900">{filteredLocations.length}</span> matching locations
+              </p>
+            )}
           </div>
 
           {/* Phase Filter */}
           <div>
-            <label className="block text-sm font-bold text-amber-950 mb-4 flex items-center gap-2">
-              <Filter className="w-5 h-5 text-amber-700" />
-              Filter by Journey Phase
+            <label className="block text-base font-bold text-amber-950 mb-5 flex items-center gap-3">
+              <Filter className="w-6 h-6 text-amber-700" />
+              🎨 Filter by Journey Phase
             </label>
             <div className="flex gap-3 flex-wrap">
               <button
                 onClick={() => setSelectedPhase("all")}
-                className={`px-5 py-3 rounded-full text-sm font-bold transition-all transform ${
+                className={`px-6 py-3 rounded-full text-sm font-bold transition-all transform duration-300 ${
                   selectedPhase === "all"
-                    ? "bg-gradient-to-r from-amber-700 to-amber-800 text-white shadow-lg scale-105"
-                    : "bg-white text-amber-900 border-2 border-amber-300 hover:bg-amber-100 hover:scale-105"
+                    ? "bg-gradient-to-r from-amber-700 to-amber-800 text-white shadow-lg scale-105 ring-2 ring-amber-400"
+                    : "bg-white text-amber-900 border-2 border-amber-300 hover:bg-amber-50 hover:scale-105 hover:shadow-md"
                 }`}
               >
-                All ({ramLocations.length})
+                📍 All ({ramLocations.length})
               </button>
               {phases.map((phase) => {
                 const count = ramLocations.filter(
                   (l) => l.phase === phase,
                 ).length;
+                const phaseColors: Record<string, string> = {
+                  "Birth & Early Life": "from-red-500 to-red-600",
+                  "Vanvās Begins": "from-orange-500 to-orange-600",
+                  "Deep Forest Journey": "from-yellow-500 to-yellow-600",
+                  "Search for Sita": "from-green-500 to-green-600",
+                  "Return & Coronation": "from-blue-500 to-blue-600",
+                  "Post-Coronation": "from-purple-500 to-purple-600",
+                };
+                const phaseEmoji: Record<string, string> = {
+                  "Birth & Early Life": "👶",
+                  "Vanvās Begins": "🚶",
+                  "Deep Forest Journey": "🌲",
+                  "Search for Sita": "🔍",
+                  "Return & Coronation": "👑",
+                  "Post-Coronation": "✨",
+                };
+
                 return (
                   <button
                     key={phase}
                     onClick={() => setSelectedPhase(phase)}
-                    className={`px-5 py-3 rounded-full text-sm font-bold transition-all transform whitespace-nowrap ${
+                    className={`px-6 py-3 rounded-full text-sm font-bold transition-all transform duration-300 whitespace-nowrap flex items-center gap-2 ${
                       selectedPhase === phase
-                        ? "bg-gradient-to-r from-amber-700 to-amber-800 text-white shadow-lg scale-105"
-                        : "bg-white text-amber-900 border-2 border-amber-200 hover:bg-amber-100 hover:scale-105"
+                        ? `bg-gradient-to-r ${phaseColors[phase]} text-white shadow-lg scale-105 ring-2 ring-offset-2 ring-amber-300`
+                        : "bg-white text-amber-900 border-2 border-amber-200 hover:bg-amber-50 hover:scale-105 hover:shadow-md"
                     }`}
                   >
-                    {phase.split(" ")[0]} ({count})
+                    <span>{phaseEmoji[phase]}</span>
+                    {phase.split(" ")[0]} <span className="font-bold opacity-80">({count})</span>
                   </button>
                 );
               })}
+            </div>
+            <div className="mt-4 p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg border-l-4 border-amber-700">
+              <p className="text-sm text-amber-900">
+                <span className="font-bold">Selected:</span> {selectedPhase === "all" ? "All Phases" : selectedPhase} •
+                <span className="font-bold ml-2">{filteredLocations.length}</span> locations shown
+              </p>
             </div>
           </div>
         </div>
