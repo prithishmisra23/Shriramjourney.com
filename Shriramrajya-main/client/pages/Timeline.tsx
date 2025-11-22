@@ -284,61 +284,124 @@ export default function Timeline() {
         </div>
 
         {/* Timeline */}
-        <div className="space-y-4">
-          {timeline.map((phase, phaseIdx) => (
-            <div key={phaseIdx}>
-              <button
-                onClick={() => setExpandedPhase(expandedPhase === phaseIdx ? null : phaseIdx)}
-                className="w-full p-4 rounded-lg border-2 border-amber-200 bg-gradient-to-r from-amber-700 to-amber-900 text-white hover:shadow-lg transition flex items-center justify-between"
-              >
-                <span className="font-playfair font-bold text-lg">{phase.phase}</span>
-                {expandedPhase === phaseIdx ? (
-                  <ChevronUp className="w-6 h-6" />
-                ) : (
-                  <ChevronDown className="w-6 h-6" />
+        <div className="space-y-5">
+          {timeline.map((phase, phaseIdx) => {
+            const phaseColors = [
+              "from-red-600 to-red-700",
+              "from-orange-600 to-orange-700",
+              "from-yellow-600 to-amber-700",
+              "from-green-600 to-emerald-700",
+              "from-blue-600 to-cyan-700",
+              "from-purple-600 to-violet-700",
+              "from-pink-600 to-rose-700",
+            ];
+            const phaseEmoji = ["👶", "🚶", "🌲", "🔍", "👑", "✨", "💫"];
+            const phaseBgColors = [
+              "from-red-50 to-orange-50",
+              "from-orange-50 to-amber-50",
+              "from-yellow-50 to-orange-50",
+              "from-green-50 to-emerald-50",
+              "from-blue-50 to-cyan-50",
+              "from-purple-50 to-violet-50",
+              "from-pink-50 to-rose-50",
+            ];
+
+            return (
+              <div key={phaseIdx} className="group">
+                <button
+                  onClick={() => setExpandedPhase(expandedPhase === phaseIdx ? null : phaseIdx)}
+                  className={`w-full p-6 rounded-2xl border-3 bg-gradient-to-r ${phaseColors[phaseIdx]} text-white hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-between group ${
+                    expandedPhase === phaseIdx ? "shadow-2xl ring-2 ring-offset-2 ring-offset-amber-100" : ""
+                  }`}
+                >
+                  <div className="flex items-center gap-4 text-left">
+                    <span className="text-4xl">{phaseEmoji[phaseIdx]}</span>
+                    <div>
+                      <p className="text-xs font-bold opacity-90 uppercase tracking-wide">Phase {phaseIdx + 1} of 7</p>
+                      <h3 className="font-playfair font-bold text-2xl leading-tight">{phase.phase}</h3>
+                      <p className="text-sm opacity-90 mt-1">{phase.events.length} significant events</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="text-right">
+                      <p className="text-3xl font-bold">{phase.events.length}</p>
+                      <p className="text-xs opacity-90">Events</p>
+                    </div>
+                    {expandedPhase === phaseIdx ? (
+                      <ChevronUp className="w-8 h-8 transition-transform group-hover:scale-125" />
+                    ) : (
+                      <ChevronDown className="w-8 h-8 transition-transform group-hover:scale-125" />
+                    )}
+                  </div>
+                </button>
+
+                {expandedPhase === phaseIdx && (
+                  <div className={`mt-5 space-y-4 pl-6 border-l-6 border-gradient-to-b from-${phaseColors[phaseIdx].split(' ')[0]} to-transparent rounded-b-2xl bg-gradient-to-br ${phaseBgColors[phaseIdx]} p-6 border-3 border-t-0 border-r-3 border-b-3`}>
+                    {phase.events.map((event, eventIdx) => (
+                      <div
+                        key={eventIdx}
+                        className="group/event relative"
+                      >
+                        {/* Timeline dot */}
+                        <div className="absolute -left-9 top-2 w-6 h-6 rounded-full border-4 border-white shadow-lg"
+                             style={{
+                               backgroundColor: phaseColors[phaseIdx].split(' ')[0] === 'from-red-600' ? '#dc2626' :
+                               phaseColors[phaseIdx].split(' ')[0] === 'from-orange-600' ? '#ea580c' :
+                               phaseColors[phaseIdx].split(' ')[0] === 'from-yellow-600' ? '#ca8a04' :
+                               phaseColors[phaseIdx].split(' ')[0] === 'from-green-600' ? '#16a34a' :
+                               phaseColors[phaseIdx].split(' ')[0] === 'from-blue-600' ? '#2563eb' :
+                               phaseColors[phaseIdx].split(' ')[0] === 'from-purple-600' ? '#9333ea' :
+                               '#e11d48'
+                             }}
+                        ></div>
+
+                        <Card className={`border-3 border-gray-300 bg-white hover:shadow-2xl transition-all transform hover:-translate-y-1 hover:scale-105`}>
+                          <CardContent className="pt-8 pb-8 px-8">
+                            <div className="space-y-4">
+                              <div>
+                                <div className="flex items-start gap-3 mb-3">
+                                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-amber-700 to-orange-700 text-white rounded-full text-xs font-bold">
+                                    #{eventIdx + 1}
+                                  </span>
+                                  <span className="inline-block px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-bold">
+                                    Event
+                                  </span>
+                                </div>
+                                <h3 className={`font-playfair font-bold text-xl md:text-2xl mb-3 bg-gradient-to-r ${phaseColors[phaseIdx]} bg-clip-text text-transparent`}>
+                                  {event.title}
+                                </h3>
+                                <p className="text-amber-900 text-base leading-relaxed mb-4">
+                                  {event.description}
+                                </p>
+                              </div>
+
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-5 border-t-2 border-gray-200">
+                                <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border-l-4 border-purple-600">
+                                  <p className="text-xs font-bold text-purple-800 uppercase mb-2">✨ Spiritual Significance</p>
+                                  <p className="text-sm text-purple-900 leading-relaxed font-medium">{event.significance}</p>
+                                </div>
+                                <div className="p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-l-4 border-blue-600">
+                                  <p className="text-xs font-bold text-blue-800 uppercase mb-2">📍 Sacred Location</p>
+                                  <p className="text-sm text-blue-900 leading-relaxed font-medium">{event.location}</p>
+                                </div>
+                              </div>
+
+                              {event.verse && (
+                                <div className="p-4 bg-gradient-to-r from-amber-100 to-orange-100 rounded-xl border-2 border-amber-400 shadow-sm">
+                                  <p className="text-xs font-bold text-amber-800 mb-2 flex items-center gap-2">📚 Sacred Source</p>
+                                  <p className="text-sm italic text-amber-950 font-medium">{event.verse}</p>
+                                </div>
+                              )}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    ))}
+                  </div>
                 )}
-              </button>
-
-              {expandedPhase === phaseIdx && (
-                <div className="space-y-4 mt-4 pl-4 border-l-4 border-amber-700">
-                  {phase.events.map((event, eventIdx) => (
-                    <Card key={eventIdx} className="border-amber-200 hover:shadow-lg transition">
-                      <CardContent className="pt-6">
-                        <div className="space-y-3">
-                          <div>
-                            <h3 className="font-bold text-amber-950 text-lg mb-2">
-                              {eventIdx + 1}. {event.title}
-                            </h3>
-                            <p className="text-amber-900 leading-relaxed mb-3">
-                              {event.description}
-                            </p>
-                          </div>
-
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-amber-200">
-                            <div>
-                              <p className="text-xs font-semibold text-amber-700 uppercase">Significance</p>
-                              <p className="text-sm text-amber-900">{event.significance}</p>
-                            </div>
-                            <div>
-                              <p className="text-xs font-semibold text-amber-700 uppercase">Location</p>
-                              <p className="text-sm text-amber-900">{event.location}</p>
-                            </div>
-                          </div>
-
-                          {event.verse && (
-                            <div className="p-3 bg-amber-50 rounded border-l-2 border-amber-700">
-                              <p className="text-xs font-semibold text-amber-700 mb-1">Source</p>
-                              <p className="text-sm italic text-amber-900">{event.verse}</p>
-                            </div>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
 
         {/* Key Lessons */}
