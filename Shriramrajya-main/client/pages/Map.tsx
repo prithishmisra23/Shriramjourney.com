@@ -37,25 +37,64 @@ export default function MapPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         {/* Hero Section */}
-        <div className="mb-12 bg-gradient-to-br from-amber-700 via-amber-800 to-amber-900 text-white rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.3),transparent_50%)]"></div>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.2),transparent_50%)]"></div>
+        <div className="mb-12 bg-gradient-to-br from-amber-700 via-amber-800 to-amber-950 text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.4),transparent_50%)]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.3),transparent_50%)]"></div>
           </div>
-          <div className="relative z-10 flex items-start justify-between gap-6">
-            <div>
-              <h1 className="font-playfair font-bold text-5xl md:text-6xl mb-4 animate-slideDown">
-                🗺️ Ram Rajya Sacred Map
-              </h1>
-              <p className="text-lg md:text-xl text-amber-100 max-w-3xl leading-relaxed">
-                Follow Shri Ram's divine journey across 50 sacred locations spanning 6 phases of his eternal life. Each marker represents a sacred moment in the legend.
-              </p>
+          <div className="relative z-10">
+            <div className="flex items-start justify-between gap-6 mb-6">
+              <div className="flex-1">
+                <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold mb-4 border border-white/30">
+                  📍 INTERACTIVE PILGRIMAGE GUIDE
+                </div>
+                <h1 className="font-playfair font-bold text-5xl md:text-7xl mb-6 animate-slideDown leading-tight">
+                  🗺️ Ram Rajya<br/>Sacred Map
+                </h1>
+                <p className="text-lg md:text-xl text-amber-100 max-w-3xl leading-relaxed mb-6">
+                  Follow Shri Ram's divine journey across <span className="font-bold text-white">45 sacred locations</span> spanning <span className="font-bold text-white">6 phases</span> of his eternal life. Each marker represents a sacred moment steeped in spiritual significance and cultural heritage.
+                </p>
+                <div className="flex gap-3 flex-wrap">
+                  <Button className="bg-white text-amber-700 hover:bg-amber-50 font-semibold px-8 py-3 rounded-xl shadow-lg flex items-center gap-2">
+                    <Download className="w-5 h-5" />
+                    Download Map (PDF)
+                  </Button>
+                  <Button className="bg-amber-400/30 backdrop-blur-sm border-2 border-white text-white hover:bg-white/20 font-semibold px-8 py-3 rounded-xl">
+                    Share Journey
+                  </Button>
+                </div>
+              </div>
             </div>
-            <Button className="bg-white text-amber-700 hover:bg-amber-50 hidden md:flex whitespace-nowrap font-semibold px-6 py-3 rounded-xl shadow-lg">
-              <Download className="w-5 h-5 mr-2" />
-              Download Map
-            </Button>
           </div>
+        </div>
+
+        {/* Quick Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-red-50 to-orange-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105 hover:-translate-y-1">
+            <p className="text-4xl font-bold text-red-600 mb-2">45</p>
+            <p className="text-sm font-bold text-amber-900">Sacred Sites</p>
+            <p className="text-xs text-amber-700 mt-1">Across India & Sri Lanka</p>
+          </Card>
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-yellow-50 to-amber-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105 hover:-translate-y-1">
+            <p className="text-4xl font-bold text-yellow-600 mb-2">6</p>
+            <p className="text-sm font-bold text-amber-900">Journey Phases</p>
+            <p className="text-xs text-amber-700 mt-1">Life Chapters</p>
+          </Card>
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-green-50 to-emerald-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105 hover:-translate-y-1">
+            <p className="text-4xl font-bold text-green-600 mb-2">14</p>
+            <p className="text-sm font-bold text-amber-900">Years Exile</p>
+            <p className="text-xs text-amber-700 mt-1">Vanvas Period</p>
+          </Card>
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105 hover:-translate-y-1">
+            <p className="text-4xl font-bold text-blue-600 mb-2">2</p>
+            <p className="text-sm font-bold text-amber-900">Countries</p>
+            <p className="text-xs text-amber-700 mt-1">India & Sri Lanka</p>
+          </Card>
+          <Card className="border-2 border-amber-200 bg-gradient-to-br from-purple-50 to-pink-50 p-6 text-center hover:shadow-xl transition-all hover:scale-105 hover:-translate-y-1">
+            <p className="text-4xl font-bold text-purple-600 mb-2">∞</p>
+            <p className="text-sm font-bold text-amber-900">Spiritual</p>
+            <p className="text-xs text-amber-700 mt-1">Significance</p>
+          </Card>
         </div>
 
         {/* Search & Filters Section */}
