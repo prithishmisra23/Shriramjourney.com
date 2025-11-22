@@ -197,6 +197,10 @@ export function InteractiveMap({
         lineJoin: "round",
         dashArray: "10, 5",
       }).addTo(map.current);
+
+      // Auto-fit map to show all markers with padding
+      const bounds = L.latLngBounds(coordinates);
+      map.current.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 });
     }
   };
 
