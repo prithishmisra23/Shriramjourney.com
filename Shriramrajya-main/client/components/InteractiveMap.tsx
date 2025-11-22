@@ -137,37 +137,22 @@ export function InteractiveMap({
       const isEnd = index === orderedLocations.length - 1;
 
       let html = "";
-      let iconSize = [56, 56];
-      let popupAnchor = [0, -28];
+      let iconSize = [64, 64];
+      let popupAnchor = [0, -32];
 
       if (isStart) {
-        html = `
-          <div style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 24px; border: 5px solid white; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.5), 0 8px 24px rgba(22, 163, 74, 0.8), inset 0 1px 3px rgba(255,255,255,0.5); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; transition: all 0.3s ease;">
-            🚩
-            <div style="position: absolute; inset: -4px; border-radius: 50%; border: 3px solid rgba(22, 163, 74, 0.4); animation: pulse 2s infinite;"></div>
-          </div>
-        `;
+        html = `<div style="width: 64px; height: 64px; background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); border: 5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.7), 0 0 0 3px rgba(22, 163, 74, 0.3); cursor: pointer; font-weight: bold;">🚩</div>`;
       } else if (isEnd) {
-        html = `
-          <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 24px; border: 5px solid white; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.5), 0 8px 24px rgba(220, 38, 38, 0.8), inset 0 1px 3px rgba(255,255,255,0.5); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; transition: all 0.3s ease;">
-            ✓
-            <div style="position: absolute; inset: -4px; border-radius: 50%; border: 3px solid rgba(220, 38, 38, 0.4); animation: pulse 2s infinite;"></div>
-          </div>
-        `;
+        html = `<div style="width: 64px; height: 64px; background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); border: 5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.7), 0 0 0 3px rgba(220, 38, 38, 0.3); cursor: pointer; font-weight: bold;">✓</div>`;
       } else {
-        html = `
-          <div style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); color: white; padding: 0; border-radius: 50%; font-weight: 900; font-size: 20px; border: 5px solid white; box-shadow: 0 0 0 3px ${color}40, 0 8px 24px ${color}aa, inset 0 2px 4px rgba(255,255,255,0.4); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; text-shadow: 0 2px 6px rgba(0,0,0,0.4); cursor: pointer; transition: all 0.3s ease; position: relative;">
-            ${String(index + 1).padStart(2, '0')}
-            <div style="position: absolute; inset: -6px; border-radius: 50%; border: 2px dashed ${color}; opacity: 0;"></div>
-          </div>
-        `;
+        html = `<div style="width: 64px; height: 64px; background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); border: 5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 12px ${color}99, 0 0 0 3px ${color}40; cursor: pointer; font-weight: 900; font-family: 'Playfair Display', serif; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">${String(index + 1).padStart(2, '0')}</div>`;
       }
 
       const marker = L.marker([location.latitude, location.longitude], {
         icon: L.divIcon({
-          html,
-          iconSize,
-          popupAnchor,
+          html: html,
+          iconSize: iconSize,
+          popupAnchor: popupAnchor,
           className: "custom-marker location-marker",
         }),
       }).addTo(map.current);
