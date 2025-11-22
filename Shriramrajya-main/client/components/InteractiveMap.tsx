@@ -312,8 +312,8 @@ export function InteractiveMap({
 
       {/* Info Panels */}
       {selectedMarker && (
-        <Card className="border-3 border-amber-300 bg-gradient-to-br from-white via-amber-50 to-orange-50 shadow-2xl">
-          <div className="p-6 space-y-5">
+        <Card className="border-4 border-amber-400 bg-gradient-to-br from-white via-amber-50 to-orange-50 shadow-2xl">
+          <div className="p-8 space-y-6">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <h3 className="font-playfair font-bold text-amber-950 text-2xl mb-2">
