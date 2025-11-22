@@ -83,7 +83,7 @@ export function InteractiveMap({
       }
     });
 
-    // Define the correct journey order (50 locations)
+    // Define the correct journey order (45 sacred locations)
     const journeyOrder = [
       "ayodhya-birth", "sarayu-river", "vashistha-ashram", "janakpur", "sita-kund",
       "palace-gate", "tamasa-river", "shringaverpur", "bharadwaj-ashram", "prayagraj",
