@@ -181,37 +181,45 @@ export function InteractiveMap({
 
     // Draw the journey line - main route
     if (coordinates.length > 0) {
-      // Shadow/glow layer
+      // Outer glow layer for depth
       L.polyline(coordinates, {
         color: "#fbbf24",
-        weight: 8,
-        opacity: 0.3,
+        weight: 12,
+        opacity: 0.25,
         lineCap: "round",
         lineJoin: "round",
       }).addTo(map.current);
 
-      // Main route line
-      L.polyline(coordinates, {
-        color: "#d97706",
-        weight: 4,
-        opacity: 0.85,
-        lineCap: "round",
-        lineJoin: "round",
-      }).addTo(map.current);
-
-      // Highlight line
+      // Mid-tone shadow layer
       L.polyline(coordinates, {
         color: "#f59e0b",
-        weight: 2,
-        opacity: 0.6,
+        weight: 8,
+        opacity: 0.4,
         lineCap: "round",
         lineJoin: "round",
-        dashArray: "10, 5",
       }).addTo(map.current);
 
-      // Auto-fit map to show all markers with padding
+      // Primary golden route line
+      L.polyline(coordinates, {
+        color: "#d97706",
+        weight: 5,
+        opacity: 0.9,
+        lineCap: "round",
+        lineJoin: "round",
+      }).addTo(map.current);
+
+      // Accent highlight line with animation
+      L.polyline(coordinates, {
+        color: "#fbbf24",
+        weight: 2.5,
+        opacity: 0.7,
+        lineCap: "round",
+        lineJoin: "round",
+      }).addTo(map.current);
+
+      // Auto-fit map to show all markers with adequate padding
       const bounds = L.latLngBounds(coordinates);
-      map.current.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 });
+      map.current.fitBounds(bounds, { padding: [80, 80], maxZoom: 7 });
     }
   };
 
