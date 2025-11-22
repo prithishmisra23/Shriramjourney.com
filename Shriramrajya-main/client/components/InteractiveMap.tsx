@@ -233,11 +233,11 @@ export function InteractiveMap({
       />
 
       {/* Legend */}
-      <Card className="border-3 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-xl">
+      <Card className="border-4 border-amber-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-2xl">
         <div className="p-8 space-y-8">
           <div>
-            <p className="font-playfair font-bold text-amber-950 mb-6 text-2xl flex items-center gap-2">
-              🗺️ Journey Markers Guide
+            <p className="font-playfair font-bold text-amber-950 mb-8 text-3xl flex items-center gap-3">
+              <span className="text-4xl">🗺️</span> Sacred Journey Markers Guide
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm mb-6">
               <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl border-2 border-green-400 shadow-md">
