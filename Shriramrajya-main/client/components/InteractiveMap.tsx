@@ -137,25 +137,28 @@ export function InteractiveMap({
       const isEnd = index === orderedLocations.length - 1;
 
       let html = "";
+      let iconSize = [56, 56];
+      let popupAnchor = [0, -28];
 
       if (isStart) {
         html = `
-          <div style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.6), inset 0 1px 2px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <div style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 24px; border: 5px solid white; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.5), 0 8px 24px rgba(22, 163, 74, 0.8), inset 0 1px 3px rgba(255,255,255,0.5); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; transition: all 0.3s ease;">
             🚩
-            <div style="position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(22, 163, 74, 0.3); animation: pulse 2s infinite;"></div>
+            <div style="position: absolute; inset: -4px; border-radius: 50%; border: 3px solid rgba(22, 163, 74, 0.4); animation: pulse 2s infinite;"></div>
           </div>
         `;
       } else if (isEnd) {
         html = `
-          <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px rgba(220, 38, 38, 0.6), inset 0 1px 2px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 24px; border: 5px solid white; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.5), 0 8px 24px rgba(220, 38, 38, 0.8), inset 0 1px 3px rgba(255,255,255,0.5); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; transition: all 0.3s ease;">
             ✓
-            <div style="position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(220, 38, 38, 0.3); animation: pulse 2s infinite;"></div>
+            <div style="position: absolute; inset: -4px; border-radius: 50%; border: 3px solid rgba(220, 38, 38, 0.4); animation: pulse 2s infinite;"></div>
           </div>
         `;
       } else {
         html = `
-          <div style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); color: white; padding: 0; border-radius: 50%; font-weight: 900; font-size: 18px; border: 4px solid white; box-shadow: 0 4px 16px ${color}99, inset 0 2px 4px rgba(255,255,255,0.3); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-            ${index + 1}
+          <div style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%); color: white; padding: 0; border-radius: 50%; font-weight: 900; font-size: 20px; border: 5px solid white; box-shadow: 0 0 0 3px ${color}40, 0 8px 24px ${color}aa, inset 0 2px 4px rgba(255,255,255,0.4); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; text-shadow: 0 2px 6px rgba(0,0,0,0.4); cursor: pointer; transition: all 0.3s ease; position: relative;">
+            ${String(index + 1).padStart(2, '0')}
+            <div style="position: absolute; inset: -6px; border-radius: 50%; border: 2px dashed ${color}; opacity: 0;"></div>
           </div>
         `;
       }
@@ -163,8 +166,9 @@ export function InteractiveMap({
       const marker = L.marker([location.latitude, location.longitude], {
         icon: L.divIcon({
           html,
-          iconSize: isStart || isEnd ? [48, 48] : [38, 38],
-          className: "custom-marker",
+          iconSize,
+          popupAnchor,
+          className: "custom-marker location-marker",
         }),
       }).addTo(map.current);
 
