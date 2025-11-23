@@ -58,9 +58,9 @@ export default function MapPage() {
                   ✨ More coming soon
                 </div>
                 <div className="flex gap-3 flex-wrap">
-                  <Button className="bg-white text-amber-700 hover:bg-amber-50 font-semibold px-8 py-3 rounded-xl shadow-lg flex items-center gap-2">
+                  <Button className="bg-white text-amber-700 hover:bg-amber-50 font-semibold px-8 py-3 rounded-xl shadow-lg flex items-center gap-2 opacity-75" disabled>
                     <Download className="w-5 h-5" />
-                    Download Map (PDF)
+                    📥 Download Map (Coming Soon)
                   </Button>
                   <Button className="bg-amber-400/30 backdrop-blur-sm border-2 border-white text-white hover:bg-white/20 font-semibold px-8 py-3 rounded-xl">
                     Share Journey
