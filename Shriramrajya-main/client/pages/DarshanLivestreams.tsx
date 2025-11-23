@@ -302,20 +302,20 @@ export default function DarshanLivestreams() {
               {/* Video Player Area */}
               <div className="space-y-4">
                 <div className="bg-black rounded-xl overflow-hidden border-4 border-amber-700">
-                  <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center relative">
-                    {/* Placeholder for YouTube embed */}
-                    <div className="text-center space-y-4">
-                      <p className="text-6xl">📹</p>
+                  <div className="aspect-video bg-gradient-to-br from-red-900 via-red-800 to-red-900 flex flex-col items-center justify-center relative">
+                    {/* Video Darshan Coming Soon Banner */}
+                    <div className="text-center space-y-4 px-6">
+                      <p className="text-6xl">📌</p>
                       <h3 className="text-white text-2xl font-bold">
-                        Live Stream Player
+                        Video Darshan Coming Soon
                       </h3>
-                      <p className="text-gray-300">
-                        YouTube iframe will load here
+                      <p className="text-red-100 text-lg">
+                        🙏 We are working with the official temple channels
                       </p>
                       {currentLivestream.isLive && (
-                        <div className="flex items-center gap-2 justify-center text-red-500 font-bold">
+                        <div className="flex items-center gap-2 justify-center text-amber-300 font-bold mt-4">
                           <Radio className="w-5 h-5 animate-pulse" />
-                          NOW PLAYING LIVE DARSHAN
+                          COMING SOON
                         </div>
                       )}
                     </div>

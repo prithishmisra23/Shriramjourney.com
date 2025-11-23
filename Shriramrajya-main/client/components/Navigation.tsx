@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [showMainMenu, setShowMainMenu] = useState(false);
+  const [showLanguageTooltip, setShowLanguageTooltip] = useState(false);
   const { language, toggleLanguage } = useLanguage();
 
   const mainFeatures = [
@@ -137,14 +138,22 @@ export function Navigation() {
             </div>
 
             {/* Language Toggle */}
-            <button
-              onClick={toggleLanguage}
-              className="px-3 py-2 text-white hover:bg-white/10 rounded-lg transition font-bold text-sm flex items-center gap-2"
-              title={language === "en" ? "Switch to Hindi" : "Switch to English"}
-            >
-              <Globe className="w-4 h-4" />
-              {language.toUpperCase()}
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => setShowLanguageTooltip(!showLanguageTooltip)}
+                className="px-3 py-2 text-white hover:bg-white/10 rounded-lg transition font-bold text-sm flex items-center gap-2"
+                title={language === "en" ? "Switch to Hindi" : "Switch to English"}
+              >
+                <Globe className="w-4 h-4" />
+                {language.toUpperCase()}
+              </button>
+              {showLanguageTooltip && (
+                <div className="absolute right-0 mt-2 w-56 bg-amber-600 text-white rounded-lg shadow-xl p-4 z-50 border-2 border-amber-500">
+                  <p className="font-bold text-sm">🌐 Languages Coming Soon</p>
+                  <p className="text-xs mt-2 text-amber-100">We are expanding to include Hindi, Sanskrit, and more languages. Stay tuned for multilingual support!</p>
+                </div>
+              )}
+            </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -259,14 +268,19 @@ export function Navigation() {
             <div className="border-t border-white/20 pt-3 mt-3">
               <button
                 onClick={() => {
-                  toggleLanguage();
-                  setIsOpen(false);
+                  setShowLanguageTooltip(!showLanguageTooltip);
                 }}
                 className="w-full text-left px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium flex items-center gap-2"
               >
                 <Globe className="w-4 h-4" />
                 {language === "en" ? "हिंदी में" : "English"}
               </button>
+              {showLanguageTooltip && (
+                <div className="mt-2 bg-amber-600 text-white rounded-lg shadow-xl p-4 border-2 border-amber-500">
+                  <p className="font-bold text-sm">🌐 Languages Coming Soon</p>
+                  <p className="text-xs mt-2 text-amber-100">We are expanding to include Hindi, Sanskrit, and more languages. Stay tuned for multilingual support!</p>
+                </div>
+              )}
             </div>
           </div>
         )}

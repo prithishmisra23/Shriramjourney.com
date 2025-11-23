@@ -142,6 +142,17 @@ export default function ARVRWalk() {
     <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50">
       <Navigation />
 
+      {/* Under Development Banner */}
+      <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="font-bold text-lg flex items-center justify-center gap-2">
+            <span className="text-2xl">🚧</span> This Feature Is Under Development
+            <span className="text-2xl">🚧</span>
+          </p>
+          <p className="text-orange-100 text-sm mt-1">📌 Expected Launch: December 2025</p>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-amber-700 to-amber-900 text-white">
         <div className="max-w-6xl mx-auto text-center space-y-4">

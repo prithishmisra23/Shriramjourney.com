@@ -307,11 +307,16 @@ Generated from Bhagwan Shri Ram Journey - Experience the Sacred Journey
                     {new Set(selectedLocations.map((l) => l.phase)).size}
                   </span>
                 </div>
-                <div className="border-t border-amber-300 pt-3 flex justify-between">
-                  <span className="text-amber-900">Est. Budget:</span>
-                  <span className="font-bold text-amber-700">
-                    ₹{estimatedCost.toLocaleString()}
-                  </span>
+                <div className="border-t border-amber-300 pt-3">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-amber-900">Est. Budget (Beta):</span>
+                    <span className="font-bold text-amber-700">
+                      ₹{estimatedCost.toLocaleString()}
+                    </span>
+                  </div>
+                  <p className="text-xs text-amber-700 bg-white px-3 py-2 rounded border border-amber-300">
+                    💰 Estimation Beta: ₹1500 average/day (may vary by travel mode)
+                  </p>
                 </div>
 
                 <Button

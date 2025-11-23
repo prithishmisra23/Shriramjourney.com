@@ -54,10 +54,13 @@ export default function MapPage() {
                 <p className="text-lg md:text-xl text-amber-100 max-w-3xl leading-relaxed mb-6">
                   Follow Shri Ram's divine journey across <span className="font-bold text-white">45 sacred locations</span> spanning <span className="font-bold text-white">6 phases</span> of his eternal life. Each marker represents a sacred moment steeped in spiritual significance and cultural heritage.
                 </p>
+                <div className="inline-block px-4 py-2 bg-amber-400/30 backdrop-blur-sm rounded-lg text-sm font-semibold text-amber-50 border border-amber-200 mb-6">
+                  ✨ More coming soon
+                </div>
                 <div className="flex gap-3 flex-wrap">
-                  <Button className="bg-white text-amber-700 hover:bg-amber-50 font-semibold px-8 py-3 rounded-xl shadow-lg flex items-center gap-2">
+                  <Button className="bg-white text-amber-700 hover:bg-amber-50 font-semibold px-8 py-3 rounded-xl shadow-lg flex items-center gap-2 opacity-75" disabled>
                     <Download className="w-5 h-5" />
-                    Download Map (PDF)
+                    📥 Download Map (Coming Soon)
                   </Button>
                   <Button className="bg-amber-400/30 backdrop-blur-sm border-2 border-white text-white hover:bg-white/20 font-semibold px-8 py-3 rounded-xl">
                     Share Journey
