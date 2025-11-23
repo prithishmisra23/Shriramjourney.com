@@ -174,7 +174,7 @@ export default function Index() {
               className="border-2 border-amber-200 rounded-lg overflow-hidden bg-amber-50"
             >
               <AccordionTrigger className="px-6 py-4 hover:bg-amber-100 text-amber-950 font-bold text-lg">
-                <span>👑 Janaki Mandir - Ayodhya</span>
+                <span>👑 Janaki Mandir - Janakpur Dham, Nepal</span>
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-6">
                 <div className="space-y-4">
