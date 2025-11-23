@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [showMainMenu, setShowMainMenu] = useState(false);
+  const [showLanguageTooltip, setShowLanguageTooltip] = useState(false);
   const { language, toggleLanguage } = useLanguage();
 
   const mainFeatures = [
@@ -23,7 +24,7 @@ export function Navigation() {
   ];
 
   const newFeatures = [
-    { icon: "🛍️", label: "Souvenir Store", href: "/souvenir-store" },
+    { icon: "���️", label: "Souvenir Store", href: "/souvenir-store" },
     { icon: "🙏", label: "Digital Pooja", href: "/digital-pooja" },
     { icon: "🔴", label: "Live Darshan", href: "/livestreams" },
     { icon: "📱", label: "Offline Mode", href: "/offline-mode" },
