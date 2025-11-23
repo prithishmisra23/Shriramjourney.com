@@ -1,327 +1,124 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { ShoppingCart, Heart, Star } from "lucide-react";
-import { useState } from "react";
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-  rating: number;
-  reviews: number;
-  description: string;
-  inStock: boolean;
-}
+import { Mail } from "lucide-react";
 
 export default function SouvenirStore() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
-
-  const products: Product[] = [
-    {
-      id: "1",
-      name: "Hand-painted Ram Idol",
-      category: "art",
-      price: 2499,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2F7e979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=500",
-      rating: 4.8,
-      reviews: 245,
-      description:
-        "Beautifully hand-painted wooden idol of Lord Rama with intricate details and traditional craftsmanship.",
-      inStock: true,
-    },
-    {
-      id: "2",
-      name: "Ramayana Epic Saree",
-      category: "clothing",
-      price: 4999,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2F53edc8ffe1d842dc993dac967c348eda?format=webp&width=500",
-      rating: 4.6,
-      reviews: 156,
-      description:
-        "Traditional cotton saree featuring scenes from the Ramayana with block-printed design.",
-      inStock: true,
-    },
-    {
-      id: "3",
-      name: "Pilgrimage Travel Kit",
-      category: "travel",
-      price: 3499,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2Fe979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=500",
-      rating: 4.7,
-      reviews: 198,
-      description:
-        "Complete travel essentials for pilgrims: prayer beads, holy water bottle, portable shrine and guidebook.",
-      inStock: true,
-    },
-    {
-      id: "4",
-      name: "Handmade Prasad Box Set",
-      category: "prasad",
-      price: 1999,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2F7e979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=500",
-      rating: 4.9,
-      reviews: 312,
-      description:
-        "Set of 3 handcrafted wooden boxes for storing and gifting sacred prasad with decorative carvings.",
-      inStock: true,
-    },
-    {
-      id: "5",
-      name: "Ramayana Kurta for Men",
-      category: "clothing",
-      price: 3299,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2F53edc8ffe1d842dc993dac967c348eda?format=webp&width=500",
-      rating: 4.5,
-      reviews: 134,
-      description:
-        "Premium cotton kurta with Ramayana motifs embroidered in gold thread. Perfect for religious occasions.",
-      inStock: true,
-    },
-    {
-      id: "6",
-      name: "Temple Miniature Set",
-      category: "art",
-      price: 5999,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2Fe979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=500",
-      rating: 4.7,
-      reviews: 89,
-      description:
-        "Intricate miniature replicas of 5 famous Ramayana temples with hand-carved marble details.",
-      inStock: false,
-    },
-    {
-      id: "7",
-      name: "Ramayana Book Bundle",
-      category: "art",
-      price: 1599,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2F7e979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=500",
-      rating: 4.8,
-      reviews: 267,
-      description:
-        "Beautifully illustrated Ramayana story books with English translations. Perfect for all ages.",
-      inStock: true,
-    },
-    {
-      id: "8",
-      name: "Sacred Journey Backpack",
-      category: "travel",
-      price: 2299,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2F53edc8ffe1d842dc993dac967c348eda?format=webp&width=500",
-      rating: 4.6,
-      reviews: 178,
-      description:
-        "Durable, lightweight backpack designed for pilgrims with multiple compartments and rain cover.",
-      inStock: true,
-    },
-    {
-      id: "9",
-      name: "Handmade Incense & Oils",
-      category: "prasad",
-      price: 899,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2Fe979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=500",
-      rating: 4.9,
-      reviews: 421,
-      description:
-        "Premium handmade incense sticks and temple oils made from natural herbs and flowers.",
-      inStock: true,
-    },
-  ];
-
-  const categories = [
-    { id: "all", label: "All Products" },
-    { id: "art", label: "Religious Art & Idols" },
-    { id: "clothing", label: "Traditional Clothing" },
-    { id: "travel", label: "Travel Kits" },
-    { id: "prasad", label: "Prasad & Temple Items" },
-  ];
-
-  const filteredProducts =
-    selectedCategory === "all"
-      ? products
-      : products.filter((p) => p.category === selectedCategory);
-
-  const toggleFavorite = (id: string) => {
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(id)) {
-      newFavorites.delete(id);
-    } else {
-      newFavorites.add(id);
-    }
-    setFavorites(newFavorites);
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50 flex flex-col">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-amber-700 to-amber-900 text-white">
-        <div className="max-w-6xl mx-auto text-center space-y-4">
-          <h1 className="font-playfair font-bold text-5xl sm:text-6xl">
-            🛍️ Ramayana Souvenir Store
-          </h1>
-          <p className="text-lg sm:text-xl text-amber-100 max-w-2xl mx-auto">
-            Handcrafted artifacts, traditional clothing, and spiritual gifts
-            celebrating the divine journey of Shri Ram
-          </p>
-        </div>
-      </section>
-
-      {/* Store Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Category Filter */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-amber-950 mb-6">
-              Shop by Category
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-2 rounded-full font-semibold transition ${
-                    selectedCategory === category.id
-                      ? "bg-amber-700 text-white shadow-lg"
-                      : "bg-white border-2 border-amber-200 text-amber-900 hover:border-amber-400"
-                  }`}
-                >
-                  {category.label}
-                </button>
-              ))}
+      <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <div className="max-w-2xl w-full">
+          {/* Main Banner */}
+          <div className="bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600 text-white rounded-3xl shadow-2xl p-12 md:p-16 text-center space-y-8 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.4),transparent_50%)]"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.3),transparent_50%)]"></div>
             </div>
-          </div>
 
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <Card
-                key={product.id}
-                className="border-2 border-amber-200 hover:shadow-xl transition overflow-hidden flex flex-col"
-              >
-                <div className="relative h-64 overflow-hidden bg-amber-50">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-105 transition"
-                  />
-                  <button
-                    onClick={() => toggleFavorite(product.id)}
-                    className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md hover:bg-amber-50 transition"
-                  >
-                    <Heart
-                      className={`w-6 h-6 ${
-                        favorites.has(product.id)
-                          ? "fill-red-500 text-red-500"
-                          : "text-gray-400"
-                      }`}
-                    />
-                  </button>
-                  {!product.inStock && (
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
-                        Out of Stock
-                      </span>
-                    </div>
-                  )}
+            <div className="relative z-10 space-y-6">
+              <div className="text-7xl md:text-8xl animate-bounce">🚧</div>
+
+              <div className="space-y-3">
+                <h1 className="font-playfair font-bold text-4xl md:text-5xl leading-tight">
+                  🛍️ Souvenir Store
+                </h1>
+                <p className="text-xl md:text-2xl text-orange-100 font-semibold">
+                  Launching Soon
+                </p>
+              </div>
+
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
+                <p className="text-lg text-orange-50 leading-relaxed">
+                  We're curating an exclusive collection of handcrafted Ramayana souvenirs, traditional clothing, and sacred items directly from talented artisans across India.
+                </p>
+              </div>
+
+              <div className="space-y-4 pt-4">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                  <p className="text-sm text-orange-100 mb-1">📌 Expected Launch</p>
+                  <p className="text-2xl font-bold text-white">December 2025</p>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-amber-950">
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription className="text-amber-700 font-semibold">
-                    ₹{product.price.toLocaleString()}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-4">
-                  <p className="text-sm text-amber-900">
-                    {product.description}
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(product.rating)
-                              ? "fill-amber-400 text-amber-400"
-                              : "text-gray-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-sm text-amber-700 font-semibold">
-                      {product.rating} ({product.reviews} reviews)
-                    </span>
-                  </div>
-                  <Button
-                    className="w-full bg-amber-700 hover:bg-amber-800 text-white font-semibold"
-                    disabled={!product.inStock}
-                  >
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    {product.inStock ? "Add to Cart" : "Out of Stock"}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
 
-          {/* Info Section */}
-          <div className="mt-20 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-8 border-2 border-amber-200">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <p className="text-4xl mb-2">🎨</p>
-                <h3 className="font-bold text-amber-950 mb-2">
-                  Authentic Craftsmanship
-                </h3>
-                <p className="text-sm text-amber-900">
-                  Each product is handmade by skilled artisans preserving
-                  traditional techniques
-                </p>
+                <div className="space-y-3">
+                  <p className="text-orange-100 font-semibold">🎁 Coming Soon:</p>
+                  <ul className="text-left space-y-2 text-orange-50">
+                    <li className="flex items-center gap-3">
+                      <span className="text-2xl">🎨</span>
+                      <span>Hand-painted Religious Idols & Art</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="text-2xl">👗</span>
+                      <span>Traditional Clothing & Accessories</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="text-2xl">🏺</span>
+                      <span>Handcrafted Prasad Boxes & Temple Items</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="text-2xl">✈️</span>
+                      <span>Pilgrim Travel Kits & Essentials</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="text-4xl mb-2">🌍</p>
-                <h3 className="font-bold text-amber-950 mb-2">
-                  Direct from Makers
-                </h3>
-                <p className="text-sm text-amber-900">
-                  Supporting local artisans and craftspeople across India
+
+              <div className="bg-white text-amber-900 rounded-xl p-6 space-y-3">
+                <p className="font-bold text-lg">Get notified when we launch</p>
+                <p className="text-sm text-amber-800 mb-4">
+                  Sign up to be the first to know and get exclusive launch offers
                 </p>
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 px-4 py-3 rounded-lg border-2 border-amber-300 focus:border-amber-700 focus:ring-2 focus:ring-amber-300 outline-none"
+                  />
+                  <Button className="bg-amber-700 hover:bg-amber-800 text-white font-semibold px-6">
+                    <Mail className="w-4 h-4 mr-2" />
+                    Notify
+                  </Button>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="text-4xl mb-2">✨</p>
-                <h3 className="font-bold text-amber-950 mb-2">
-                  Quality Guaranteed
-                </h3>
-                <p className="text-sm text-amber-900">
-                  Every item is inspected and certified for authenticity
-                </p>
+
+              <div className="pt-4">
+                <Link to="/">
+                  <Button className="bg-white text-amber-700 hover:bg-amber-50 font-bold text-lg px-8 py-3">
+                    ← Back to Home
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
+
+          {/* Info Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div className="bg-white rounded-2xl p-6 border-2 border-amber-200 shadow-lg text-center">
+              <p className="text-5xl mb-3">🎯</p>
+              <h3 className="font-bold text-amber-950 mb-2">Curated Selection</h3>
+              <p className="text-sm text-amber-800">
+                Every product is carefully selected for authenticity and quality
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border-2 border-amber-200 shadow-lg text-center">
+              <p className="text-5xl mb-3">🤝</p>
+              <h3 className="font-bold text-amber-950 mb-2">Support Artisans</h3>
+              <p className="text-sm text-amber-800">
+                Direct support to skilled craftspeople and rural communities
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border-2 border-amber-200 shadow-lg text-center">
+              <p className="text-5xl mb-3">✨</p>
+              <h3 className="font-bold text-amber-950 mb-2">Quality Assured</h3>
+              <p className="text-sm text-amber-800">
+                Certified authentic items with guaranteed quality standards
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       <Footer />
     </div>
