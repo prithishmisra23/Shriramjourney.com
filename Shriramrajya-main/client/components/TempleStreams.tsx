@@ -148,19 +148,25 @@ export function TempleStreams() {
             </div>
           </CardHeader>
           <CardContent className="space-y-6 pt-6">
-            {/* YouTube Embed */}
-            <div className="w-full bg-black rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                width="100%"
-                height="400"
-                src={`https://www.youtube.com/embed/${selectedTemple.videoId}?si=RamRajyaLiveStream`}
-                title={`${selectedTemple.name} Live Darshan`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="rounded-lg"
-              />
+            {/* Video Darshan Coming Soon Banner */}
+            <div className="w-full bg-gradient-to-br from-red-900 via-red-800 to-red-900 rounded-lg overflow-hidden shadow-lg p-8 text-center space-y-4 border-2 border-red-500">
+              <div className="text-6xl">📌</div>
+              <h3 className="text-2xl font-bold text-white">Video Darshan Coming Soon</h3>
+              <p className="text-red-100 text-lg">
+                🙏 We are working with the official temple channels to bring you live darshan experiences.
+              </p>
+              <p className="text-red-200 text-sm">
+                Stay tuned for direct streaming from sacred temples across India.
+              </p>
+              <a
+                href={`https://www.youtube.com/watch?v=${selectedTemple.videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 bg-white text-red-600 font-bold rounded-lg hover:bg-gray-100 transition"
+              >
+                <Play className="w-4 h-4 inline mr-2" />
+                Visit Official Channel
+              </a>
             </div>
 
             <p className="text-gray-300 text-lg leading-relaxed">
