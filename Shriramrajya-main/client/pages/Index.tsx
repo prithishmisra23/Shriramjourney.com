@@ -201,7 +201,7 @@ export default function Index() {
                     <p className="text-amber-900 leading-relaxed">
                       The Janaki Mandir is a magnificent temple dedicated to
                       Sita Mata, the beloved consort of Shri Ram. Located in the
-                      heart of Ayodhya, this temple stands as a testament to
+                      heart of Nepal, this temple stands as a testament to
                       feminine divinity and the eternal devotion between Ram and
                       Sita. Built over three centuries ago, the temple showcases
                       beautiful Victorian architecture mixed with traditional
