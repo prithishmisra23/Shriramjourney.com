@@ -36,6 +36,18 @@ export default function Index() {
     <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50">
       <Navigation />
 
+      {/* Launch Announcement Banner */}
+      <section className="bg-gradient-to-r from-green-600 via-teal-600 to-blue-600 text-white py-6 px-4 sm:px-6 lg:px-8 text-center mt-16">
+        <div className="max-w-6xl mx-auto space-y-2">
+          <p className="font-bold text-lg sm:text-xl">
+            🎉 Launching the Beta Version on 25 November 2025
+          </p>
+          <p className="text-sm sm:text-base text-green-100">
+            🚀 Explore Shri Ram's Journey – More Features Coming Soon
+          </p>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-amber-700 to-amber-900 text-white relative overflow-hidden">
         <div className="max-w-6xl mx-auto text-center space-y-6">
