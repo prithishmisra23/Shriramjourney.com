@@ -247,9 +247,10 @@ export default function Timeline() {
             <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold mb-4 border border-white/30">
               📖 EPIC NARRATIVE
             </div>
-            <h1 className="font-playfair font-bold text-5xl md:text-7xl mb-6 leading-tight">
+            <h1 className="font-playfair font-bold text-5xl md:text-7xl mb-3 leading-tight">
               The Ramayana<br/>Timeline
             </h1>
+            <p className="text-sm text-amber-200 font-semibold mb-6">🖼 Image illustrations will be added soon.</p>
             <p className="text-lg md:text-xl text-amber-100 max-w-3xl leading-relaxed">
               A chronological journey through <span className="font-bold text-white">7 pivotal phases</span> of Shri Ram's divine life, spanning his birth, trials, victories, and eternal legacy. Discover the <span className="font-bold text-white">spiritual significance</span> of each moment.
             </p>
@@ -446,7 +447,7 @@ export default function Timeline() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <p className="text-4xl mb-2">🌟</p>
+                <p className="text-4xl mb-2">����</p>
                 <p className="font-bold text-lg mb-2">Spiritual Transformation</p>
                 <p className="text-sm text-purple-200">Journey through trials that purify the soul and elevate consciousness</p>
               </div>
