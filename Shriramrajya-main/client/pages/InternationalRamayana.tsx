@@ -127,8 +127,6 @@ export default function InternationalRamayana() {
         "Where the Ramayana evolved into the magnificent Thai epic 'Ramakien'. Experience the story through stunning temples, dance, and art.",
       coverage:
         "Thailand has deeply integrated the Ramayana into its culture through the Ramakien, with numerous temples and cultural performances.",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2Fe979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=800",
       culturalSignificance:
         "The Thai version of Ramayana (Ramakien) is deeply embedded in Thai culture, with the story depicted in temples, dance performances, and royal palaces.",
       bestTime: "November to February (cool and dry season)",
