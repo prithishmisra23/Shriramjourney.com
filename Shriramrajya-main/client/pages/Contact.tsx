@@ -60,8 +60,8 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-amber-700 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-bold text-amber-950">Email</p>
-                    <a href="mailto:contact@shriramjourney.com" className="text-amber-700 hover:text-amber-900 transition">
-                      contact@shriramjourney.com
+                    <a href="mailto: prithishmisrabusiness@gmail.com" className="text-amber-700 hover:text-amber-900 transition">
+                      prithishmisrabusiness@gmail.com
                     </a>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-amber-700 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-bold text-amber-950">Location</p>
-                    <p className="text-amber-900">Ayodhya, Uttar Pradesh, India</p>
+                    <p className="text-amber-900">Uttar Pradesh, India</p>
                   </div>
                 </div>
               </div>
@@ -97,9 +97,9 @@ export default function ContactPage() {
               <p className="text-amber-900 mb-4">
                 For tourism, API, or media partnerships, please write to:
               </p>
-              <a href="mailto:partnerships@shriramjourney.com" className="inline-flex items-center gap-2 text-amber-700 hover:text-amber-900 transition font-semibold">
+              <a href="mailto:prithishmisrabusiness@gmail.com" className="inline-flex items-center gap-2 text-amber-700 hover:text-amber-900 transition font-semibold">
                 <Mail className="w-5 h-5" />
-                partnerships@shriramjourney.com
+                prithishmisrabusiness@gmail.com
               </a>
             </div>
 
