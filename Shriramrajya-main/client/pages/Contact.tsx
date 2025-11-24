@@ -60,7 +60,7 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-amber-700 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-bold text-amber-950">Email</p>
-                    <a href="mailto: prithishmisrabusiness@gmail.com" className="text-amber-700 hover:text-amber-900 transition">
+                    <a href="mailto:prithishmisrabusiness@gmail.com" className="text-amber-700 hover:text-amber-900 transition">
                       prithishmisrabusiness@gmail.com
                     </a>
                   </div>
