@@ -118,7 +118,7 @@ export default function Index() {
                 <div className="space-y-4">
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2Fe979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=800"
-                    alt="Ram Mandir"
+                    alt="Ram Mandir in Ayodhya - Newly inaugurated temple with intricate marble carvings and traditional architecture"
                     className="w-full h-72 object-cover rounded-lg"
                   />
                   <div className="space-y-3">
