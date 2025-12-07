@@ -1,1 +1,12 @@
-google.com, pub-1957479129576859, DIRECT, f08c47fec0942fa0
+# ads.txt
+# This file contains the authorized digital sellers for Shriram Journey
+# For more information, visit: https://iabtechlab.com/ads-txt/
+
+# Google AdSense
+google.com, ca-pub-1957479129576859, DIRECT, f08c47fec0942fa0
+
+# Google Ad Exchange
+google.com, ca-pub-1957479129576859, RESELLER, f08c47fec0942fa0
+
+# Authorized Ad Networks (add as you partner with them)
+# format: domain, account-id, relationship, certification-id
