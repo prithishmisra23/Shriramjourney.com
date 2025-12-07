@@ -1,0 +1,163 @@
+# SHRIRAM JOURNEY - DUAL LICENSE AGREEMENT
+
+This project uses dual licensing to balance open-source collaboration with content protection:
+
+## PART 1: MIT LICENSE (for Code)
+
+All code, configuration, and technical implementation (JavaScript, TypeScript, CSS, build files, etc.) 
+are licensed under the MIT License.
+
+### MIT License Text
+
+Copyright (c) 2024 Shriram Journey Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## PART 2: CREATIVE COMMONS BY-SA 4.0 (for Content)
+
+All content, including but not limited to: narrative text, Ramayana stories, temple descriptions, 
+pilgrimage guides, translations, research, photographs, artwork, and multimedia assets are licensed 
+under Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA 4.0).
+
+### Key Terms of CC-BY-SA 4.0:
+
+**You are free to:**
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material for any purpose, even commercially
+
+**Under the following terms:**
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if 
+  changes were made. You may do so in any reasonable manner, but not in any way that suggests the 
+  licensor endorses you or your use.
+- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your 
+  contributions under the same license as the original.
+- **No additional restrictions** — You may not apply legal terms or technological measures that 
+  legally restrict others from doing anything the license permits.
+
+### Full CC-BY-SA 4.0 License
+
+For the complete legal text of the Creative Commons Attribution-ShareAlike 4.0 International license, 
+please visit: https://creativecommons.org/licenses/by-sa/4.0/
+
+---
+
+## Which License Applies to What?
+
+### MIT License (Code)
+- Source code: `/client`, `/server`, `/shared`
+- Configuration files: `vite.config.ts`, `tailwind.config.ts`, `tsconfig.json`, `postcss.config.js`
+- Build scripts and tooling files
+- UI component library files
+- Technical utilities and helper functions
+
+### CC-BY-SA 4.0 (Content)
+- All narrative text and story content
+- Ramayana episode descriptions
+- Temple descriptions and historical information
+- Location guides and pilgrimage information
+- Translations of sacred texts
+- Blog posts and articles
+- Images, photographs, and artwork
+- Audio recordings and video content
+- Research documents and references
+- Any other creative content
+
+### Documentation (CC-BY-SA 4.0)
+- README.md
+- CONTRIBUTING.md
+- CODE_OF_CONDUCT.md
+- docs/ folder content
+- Any user-facing documentation
+
+---
+
+## For Contributors
+
+When contributing to this project:
+
+1. **Code contributions**: Your code will be licensed under MIT. By submitting a PR, you agree to license 
+   your code contributions under the MIT License.
+
+2. **Content contributions**: Your content (text, images, translations) will be licensed under CC-BY-SA 4.0. 
+   By submitting content, you represent that you have the right to do so and agree to license it under CC-BY-SA 4.0.
+
+3. **Hybrid files**: Some files may contain both code and content. These use the more restrictive license 
+   (CC-BY-SA 4.0). Clarification in PRs is welcome!
+
+---
+
+## Why Dual Licensing?
+
+This dual licensing approach serves our mission:
+
+- **MIT for code**: Encourages developers worldwide to improve and extend our platform without restrictions
+- **CC-BY-SA for content**: Protects spiritual and cultural content while allowing global sharing and 
+  localization with attribution. Ensures Dharma knowledge remains in the community.
+
+This balances innovation (code freedom) with preservation (content integrity).
+
+---
+
+## Attribution Examples
+
+### For Content Usage
+
+If you use our content, proper attribution looks like:
+
+> "This content is from Shriram Journey (shriramjourney.com) and is licensed under CC-BY-SA 4.0."
+
+For adaptations:
+
+> "Adapted from Shriram Journey content (shriramjourney.com), used under CC-BY-SA 4.0"
+
+### For Code Reuse
+
+MIT requires attribution but is simple:
+
+
+// Based on code from Shriram Journey
+// Original: https://github.com/prithishmisra23/Shriramjourney.com
+// License: MIT
+```
+
+---
+
+## Questions About Licensing?
+
+- **For code licensing**: Open an issue on GitHub or check the MIT License FAQ
+- **For content licensing**: See https://creativecommons.org/licenses/by-sa/4.0/ or contact us
+- **General questions**: Email: legal@shriramjourney.com
+
+---
+
+## Open Source & Dharma Philosophy
+
+This licensing reflects our commitment to the Dharma principle of **Gyaan Daan** (sharing knowledge).
+
+- Code is shared freely for innovation (MIT)
+- Content is shared with community protection (CC-BY-SA)
+- Together, we preserve and advance the Ramayana legacy
+
+---
+
+**Last Updated**: 2024  
+**Maintainers**: Shriram Journey Contributor Team  
+**For latest**: See https://github.com/prithishmisra23/Shriramjourney.com/blob/main/LICENSE
