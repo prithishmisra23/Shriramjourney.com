@@ -18,9 +18,12 @@
     "start": "node dist/server/node-build.mjs",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "verify:journey": "npx tsx scripts/verify-journey.ts",
+    "verify:assets": "npx tsx scripts/verify-assets.ts"
   },
   "dependencies": {
+    "@react-three/xr": "^6.6.29",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "zod": "^3.25.76"

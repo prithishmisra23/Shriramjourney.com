@@ -127,6 +127,8 @@ export default function InternationalRamayana() {
         "Where the Ramayana evolved into the magnificent Thai epic 'Ramakien'. Experience the story through stunning temples, dance, and art.",
       coverage:
         "Thailand has deeply integrated the Ramayana into its culture through the Ramakien, with numerous temples and cultural performances.",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2Fd90bbe9fa7e84f6aa0f8e85ef524c7ad%2Fe979eeb96fea4ee6953e61b1e2cdcae4?format=webp&width=800",
       culturalSignificance:
         "The Thai version of Ramayana (Ramakien) is deeply embedded in Thai culture, with the story depicted in temples, dance performances, and royal palaces.",
       bestTime: "November to February (cool and dry season)",
@@ -238,11 +240,10 @@ export default function InternationalRamayana() {
                 <button
                   key={country.id}
                   onClick={() => setSelectedCountry(country.id)}
-                  className={`p-6 rounded-xl font-bold text-lg transition transform hover:scale-105 ${
-                    selectedCountry === country.id
+                  className={`p-6 rounded-xl font-bold text-lg transition transform hover:scale-105 ${selectedCountry === country.id
                       ? "bg-gradient-to-br from-amber-700 to-amber-900 text-white shadow-lg scale-105"
                       : "bg-white border-2 border-amber-200 text-amber-900 hover:border-amber-400"
-                  }`}
+                    }`}
                 >
                   <span className="text-4xl mb-2 block">{country.emoji}</span>
                   {country.name}

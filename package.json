@@ -1,0 +1,12 @@
+{
+    "name": "shriram-journey-root",
+    "private": true,
+    "scripts": {
+        "dev": "npm run dev --prefix Shriramrajya-main",
+        "build": "npm run build --prefix Shriramrajya-main",
+        "start": "npm run start --prefix Shriramrajya-main",
+        "test": "npm run test --prefix Shriramrajya-main",
+        "verify:assets": "npm run verify:assets --prefix Shriramrajya-main",
+        "verify:journey": "npm run verify:journey --prefix Shriramrajya-main"
+    }
+}

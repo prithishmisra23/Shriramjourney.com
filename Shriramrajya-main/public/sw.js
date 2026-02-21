@@ -1,0 +1,13 @@
+// Minimal Service Worker
+self.addEventListener('install', () => {
+    self.skipWaiting();
+});
+
+self.addEventListener('activate', () => {
+    return self.clients.claim();
+});
+
+self.addEventListener('fetch', (event) => {
+    // Pass through all requests
+    event.respondWith(fetch(event.request));
+});

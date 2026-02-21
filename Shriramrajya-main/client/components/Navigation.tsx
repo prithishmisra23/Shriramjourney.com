@@ -1,34 +1,41 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { getTranslation } from "@/lib/translations";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [showMainMenu, setShowMainMenu] = useState(false);
-  const [showLanguageTooltip, setShowLanguageTooltip] = useState(false);
   const { language, toggleLanguage } = useLanguage();
+  const t = (key: string) => getTranslation(key, language);
 
   const mainFeatures = [
-    { icon: "🗺️", label: "Map", href: "/map" },
-    { icon: "📅", label: "Timeline", href: "/timeline" },
-    { icon: "📋", label: "Itinerary", href: "/itinerary" },
+    { icon: "🗺️", label: t("nav.map"), href: "/map" },
+    { icon: "📅", label: t("nav.timeline"), href: "/timeline" },
+    { icon: "📋", label: t("nav.itinerary"), href: "/itinerary" },
+  ];
+
+  const templeLinks = [
+    { label: t("nav.ramMandir"), href: "/ram-mandir" },
+    { label: t("nav.janakiMandir"), href: "/janaki-mandir" },
+    { label: t("nav.nashik"), href: "/nashik" },
+    { label: t("nav.rameswaram"), href: "/rameswaram" },
   ];
 
   const exploreFeatures = [
-    { icon: "🏛️", label: "Sacred Temples", href: "/ram-mandir" },
-    { icon: "🎓", label: "Quiz & Learning", href: "/quiz" },
-    { icon: "📖", label: "Stories", href: "/community" },
-    { icon: "🌍", label: "International Ramayana", href: "/international-ramayana" },
+    { icon: "🏛️", label: t("nav.temples"), href: "/ram-mandir" },
+    { icon: "🎓", label: t("nav.quiz"), href: "/quiz" },
+    { icon: "📖", label: t("nav.stories"), href: "/community" },
+    { icon: "🌍", label: t("nav.international"), href: "/international-ramayana" },
   ];
 
   const newFeatures = [
-    { icon: "🛍️", label: "Souvenir Store", href: "/souvenir-store" },
-    { icon: "🙏", label: "Digital Pooja", href: "/digital-pooja" },
-    { icon: "🔴", label: "Live Darshan", href: "/livestreams" },
-    { icon: "📱", label: "Offline Mode", href: "/offline-mode" },
-    { icon: "🥽", label: "VR/AR Experience", href: "/ar-vr-walk" },
+    { icon: "🛍️", label: t("nav.store"), href: "/souvenir-store" },
+    { icon: "🙏", label: t("nav.pooja"), href: "/digital-pooja" },
+    { icon: "🔴", label: t("nav.livestreams"), href: "/livestreams" },
+    { icon: "📱", label: t("nav.offline"), href: "/offline-mode" },
+    { icon: "🥽", label: t("nav.vrar"), href: "/ar-vr-walk" },
   ];
 
   return (
@@ -47,10 +54,10 @@ export function Navigation() {
               </div>
               <div className="flex flex-col">
                 <span className="font-playfair font-bold text-white text-lg hidden sm:inline">
-                  Bhagwan
+                  {language === "hi" ? "भगवान" : "Bhagwan"}
                 </span>
                 <span className="font-playfair font-bold text-amber-100 text-sm">
-                  Shri Ram Journey
+                  {language === "hi" ? "श्री राम यात्रा" : "Shri Ram Journey"}
                 </span>
               </div>
             </Link>
@@ -68,7 +75,7 @@ export function Navigation() {
               {/* Mega Menu Button */}
               <div className="relative group">
                 <button className="px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium text-sm flex items-center gap-2">
-                  ✨ Explore
+                  ✨ {t("nav.explore")}
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
                 </button>
 
@@ -79,15 +86,10 @@ export function Navigation() {
                       {/* Temples */}
                       <div>
                         <h3 className="font-bold text-amber-900 text-sm mb-3">
-                          🏛️ SACRED TEMPLES
+                          🏛️ {t("nav.temples").toUpperCase()}
                         </h3>
                         <div className="space-y-2">
-                          {[
-                            { label: "Ram Mandir", href: "/ram-mandir" },
-                            { label: "Janaki Mandir", href: "/janaki-mandir" },
-                            { label: "Nashik & Panchavati", href: "/nashik" },
-                            { label: "Rameswaram", href: "/rameswaram" },
-                          ].map((item) => (
+                          {templeLinks.map((item) => (
                             <Link key={item.href} to={item.href}>
                               <div className="text-amber-800 hover:text-amber-600 hover:bg-amber-50 px-3 py-2 rounded transition text-sm font-medium">
                                 {item.label}
@@ -102,7 +104,7 @@ export function Navigation() {
                       {/* Explore Options */}
                       <div>
                         <h3 className="font-bold text-amber-900 text-sm mb-3">
-                          📚 LEARN & ENGAGE
+                          📚 {t("nav.learn").toUpperCase()}
                         </h3>
                         <div className="grid grid-cols-2 gap-2">
                           {exploreFeatures.map((item) => (
@@ -120,7 +122,7 @@ export function Navigation() {
                       {/* New Features */}
                       <div>
                         <h3 className="font-bold text-amber-900 text-sm mb-3">
-                          🎉 NEW FEATURES
+                          🎉 {t("nav.newFeatures").toUpperCase()}
                         </h3>
                         <div className="grid grid-cols-2 gap-2">
                           {newFeatures.map((item) => (
@@ -134,26 +136,18 @@ export function Navigation() {
                       </div>
                     </div>
                   </div>
+                </div>
               </div>
-            </div>
 
-            {/* Language Toggle */}
-            <div className="relative">
+              {/* Language Toggle — FUNCTIONAL */}
               <button
-                onClick={() => setShowLanguageTooltip(!showLanguageTooltip)}
-                className="px-3 py-2 text-white hover:bg-white/10 rounded-lg transition font-bold text-sm flex items-center gap-2"
-                title={language === "en" ? "Switch to Hindi" : "Switch to English"}
+                onClick={toggleLanguage}
+                className="px-3 py-2 text-white hover:bg-white/10 rounded-lg transition font-bold text-sm flex items-center gap-2 border border-white/20"
+                title={language === "en" ? "हिंदी में बदलें" : "Switch to English"}
               >
                 <Globe className="w-4 h-4" />
-                {language.toUpperCase()}
+                {language === "en" ? "हिंदी" : "EN"}
               </button>
-              {showLanguageTooltip && (
-                <div className="absolute right-0 mt-2 w-56 bg-amber-600 text-white rounded-lg shadow-xl p-4 z-50 border-2 border-amber-500">
-                  <p className="font-bold text-sm">🌐 Languages Coming Soon</p>
-                  <p className="text-xs mt-2 text-amber-100">We are expanding to include Hindi, Sanskrit, and more languages. Stay tuned for multilingual support!</p>
-                </div>
-              )}
-            </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -191,11 +185,10 @@ export function Navigation() {
               onClick={() => setShowMainMenu(!showMainMenu)}
               className="w-full text-left px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium flex items-center justify-between"
             >
-              ✨ Explore All Features
+              ✨ {t("nav.exploreAll")}
               <ChevronDown
-                className={`w-4 h-4 transition-transform ${
-                  showMainMenu ? "rotate-180" : ""
-                }`}
+                className={`w-4 h-4 transition-transform ${showMainMenu ? "rotate-180" : ""
+                  }`}
               />
             </button>
 
@@ -204,15 +197,10 @@ export function Navigation() {
                 {/* Temples */}
                 <div>
                   <p className="text-amber-200 text-xs font-bold mb-2">
-                    🏛️ SACRED TEMPLES
+                    🏛️ {t("nav.temples").toUpperCase()}
                   </p>
                   <div className="space-y-1">
-                    {[
-                      { label: "Ram Mandir", href: "/ram-mandir" },
-                      { label: "Janaki Mandir", href: "/janaki-mandir" },
-                      { label: "Nashik & Panchavati", href: "/nashik" },
-                      { label: "Rameswaram", href: "/rameswaram" },
-                    ].map((item) => (
+                    {templeLinks.map((item) => (
                       <Link key={item.href} to={item.href}>
                         <div
                           onClick={() => setIsOpen(false)}
@@ -228,7 +216,7 @@ export function Navigation() {
                 {/* Learn */}
                 <div>
                   <p className="text-amber-200 text-xs font-bold mb-2">
-                    📚 LEARN & ENGAGE
+                    📚 {t("nav.learn").toUpperCase()}
                   </p>
                   <div className="space-y-1">
                     {exploreFeatures.map((item) => (
@@ -247,7 +235,7 @@ export function Navigation() {
                 {/* New Features */}
                 <div>
                   <p className="text-amber-200 text-xs font-bold mb-2">
-                    🎉 NEW FEATURES
+                    🎉 {t("nav.newFeatures").toUpperCase()}
                   </p>
                   <div className="space-y-1">
                     {newFeatures.map((item) => (
@@ -265,22 +253,18 @@ export function Navigation() {
               </div>
             )}
 
+            {/* Mobile Language Toggle — FUNCTIONAL */}
             <div className="border-t border-white/20 pt-3 mt-3">
               <button
                 onClick={() => {
-                  setShowLanguageTooltip(!showLanguageTooltip);
+                  toggleLanguage();
+                  setIsOpen(false);
                 }}
-                className="w-full text-left px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium flex items-center gap-2"
+                className="w-full text-left px-4 py-2 text-white hover:bg-white/10 rounded-lg transition font-medium flex items-center gap-2 border border-white/20"
               >
                 <Globe className="w-4 h-4" />
-                {language === "en" ? "हिंदी में" : "English"}
+                {language === "en" ? "🇮🇳 हिंदी में बदलें" : "🇺🇸 Switch to English"}
               </button>
-              {showLanguageTooltip && (
-                <div className="mt-2 bg-amber-600 text-white rounded-lg shadow-xl p-4 border-2 border-amber-500">
-                  <p className="font-bold text-sm">🌐 Languages Coming Soon</p>
-                  <p className="text-xs mt-2 text-amber-100">We are expanding to include Hindi, Sanskrit, and more languages. Stay tuned for multilingual support!</p>
-                </div>
-              )}
             </div>
           </div>
         )}

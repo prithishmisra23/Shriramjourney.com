@@ -22,6 +22,8 @@ export const translations = {
       offline: "Offline Mode",
       vrar: "VR/AR Experience",
       kids: "Kids Learning",
+      switchLang: "हिंदी में देखें",
+      exploreAll: "Explore All Features",
     },
     // Home Page
     home: {
@@ -29,9 +31,9 @@ export const translations = {
       heroTitleHighlight: "Shri Ram",
       heroSubtitle:
         "From the sacred city of Ayodhya to the distant shores of Lanka, follow the divine path of Lord Rama through his epic journey.",
-      exploreButton: "Explore the Journey →",
+      exploreButton: "Start the Journey →",
       ramMandirTitle: "🏰 Ram Mandir in 3D",
-      ramMandirDesc: "Explore the newly inaugurated Ram Mandir - drag to rotate, scroll to zoom",
+      ramMandirDesc: "Explore the newly inaugurated Ram Mandir — rotate, zoom, and experience the divine architecture",
       mandirHeight: "49m",
       mandirHeightLabel: "Height",
       mandirInauguration: "Inaugurated Jan 2024",
@@ -40,13 +42,88 @@ export const translations = {
       sacredMandirDesc: "Explore the divine temples dedicated to Shri Ram and Sita Mata",
       livedarshan: "Live Darshan",
       journeyTimeline: "🕉️ The Sacred Journey",
-      journeyTimelineDesc:
-        "Trace the divine path of Lord Rama through the pivotal moments of his life",
+      journeyTimelineDesc: "Trace the divine path of Lord Rama through the pivotal moments of his life",
       whyChoose: "Why Choose Bhagwan Shri Ram Journey?",
       whyChooseDesc: "Everything you need for a meaningful spiritual journey",
       beginJourney: "Begin Your Divine Journey Today",
       beginJourneyDesc: "Join millions of devotees exploring the sacred legacy of Shri Ram",
       startExploring: "Start Exploring →",
+      todayInJourney: "🌅 Today in Rama's Journey",
+      todayInJourneyDesc: "Discover a new sacred location every day",
+      quizTeaser: "🎓 Test Your Ramayana Knowledge",
+      quizTeaserDesc: "Challenge yourself with our quiz and earn divine badges",
+      quizTeaserCta: "Take the Quiz →",
+      mapPreview: "🗺️ Interactive Pilgrimage Map",
+      mapPreviewDesc: "Explore 50+ sacred locations across India, Nepal & Sri Lanka",
+      mapPreviewCta: "Open Full Map →",
+      quickTemples: "🏛️ Quick Temple Access",
+    },
+    // Feature Cards
+    features: {
+      interactiveMap: "Interactive Map",
+      interactiveMapDesc: "Explore 50+ locations with color-coded phases",
+      offlineAccess: "Offline Access",
+      offlineAccessDesc: "Download maps for offline viewing",
+      aiGuide: "AI Guide",
+      aiGuideDesc: "Ask questions, get instant answers",
+      richContent: "Rich Content",
+      richContentDesc: "Comprehensive Ramayana teachings",
+      itinerary: "Itinerary Builder",
+      itineraryDesc: "Plan custom pilgrimage journeys",
+      community: "Community",
+      communityDesc: "Connect with millions of devotees",
+      livestreams: "Livestreams",
+      livestreamsDesc: "Watch temple aarti ceremonies live",
+      quizBadges: "Quiz & Badges",
+      quizBadgesDesc: "Test knowledge, earn achievements",
+      travelBookings: "Travel Bookings",
+      travelBookingsDesc: "Book flights, hotels, trains easily",
+      souvenirStore: "Souvenir Store",
+      souvenirStoreDesc: "Buy handcrafted art and Ramayana gifts",
+      internationalRamayana: "International Ramayana",
+      internationalRamayanaDesc: "Explore Ramayana across Asia",
+      digitalPooja: "Digital Pooja Booking",
+      digitalPoojaDesc: "Book temple ceremonies online",
+      offlineMode: "Offline Mode",
+      offlineModeDesc: "Download guides and maps for offline use",
+      arvrWalk: "AR/VR Walk with Ram",
+      arvrWalkDesc: "Immersive 3D experience of Ramayana",
+      templeStreams: "Temple Livestreams",
+      templeStreamsDesc: "Watch live darshan from temples 24/7",
+    },
+    // Share & Viral
+    share: {
+      shareTitle: "Explore Shri Ram's Journey",
+      sharePage: "Share this page",
+      whatsapp: "Share on WhatsApp",
+      twitter: "Share on Twitter",
+      copyLink: "Copy Link",
+      copied: "Link Copied!",
+      continueJourney: "Continue the Journey",
+      continueJourneyDesc: "Explore the next sacred destination",
+      visitNext: "Visit Next →",
+      quizBadgeTitle: "I earned a badge on Shriram Journey!",
+      downloadBadge: "Download Badge",
+      shareBadge: "Share Badge",
+    },
+    // Why Choose
+    whyChoose: {
+      free: "100% Free",
+      freeDesc: "All features accessible without any cost",
+      authentic: "Authentic Content",
+      authenticDesc: "Verified scriptures & historical accuracy",
+      global: "Global Community",
+      globalDesc: "Connect with devotees worldwide",
+      userFriendly: "User Friendly",
+      userFriendlyDesc: "Easy navigation for all ages",
+      secure: "Secure & Safe",
+      secureDesc: "Your data is protected & private",
+      comprehensive: "Comprehensive",
+      comprehensiveDesc: "50+ locations, full timeline coverage",
+      available: "Always Available",
+      availableDesc: "Access anytime, anywhere on any device",
+      communityDriven: "Community Driven",
+      communityDrivenDesc: "Share stories and connect with others",
     },
     // Common
     common: {
@@ -62,6 +139,11 @@ export const translations = {
       download: "Download",
       subscribe: "Subscribe",
       viewMore: "View More",
+      fullscreen: "Fullscreen",
+      exitFullscreen: "Exit Fullscreen",
+      rotate: "Drag to rotate",
+      zoom: "Scroll to zoom",
+      webglUnsupported: "Your browser doesn't support 3D. Showing image instead.",
     },
   },
   hi: {
@@ -87,6 +169,8 @@ export const translations = {
       offline: "ऑफ़लाइन मोड",
       vrar: "VR/AR अनुभव",
       kids: "बच्चों के लिए सीखना",
+      switchLang: "Switch to English",
+      exploreAll: "सभी सुविधाएं खोजें",
     },
     // Home Page
     home: {
@@ -96,7 +180,7 @@ export const translations = {
         "अयोध्या के पवित्र शहर से लेकर लंका के दूर तटों तक, भगवान राम के महान जीवन पथ को जानें।",
       exploreButton: "यात्रा शुरू करें →",
       ramMandirTitle: "🏰 3D में राम मंदिर",
-      ramMandirDesc: "नव निर्मित राम मंदिर को देखें - घुमाने के लिए खींचें, ज़ूम के लिए स्क्र��ल करें",
+      ramMandirDesc: "नव निर्मित राम मंदिर को देखें — घुमाएं, ज़ूम करें, और दिव्य वास्तुकला का अनुभव करें",
       mandirHeight: "49मी",
       mandirHeightLabel: "ऊंचाई",
       mandirInauguration: "जनवरी 2024 को उद्घाटित",
@@ -111,6 +195,82 @@ export const translations = {
       beginJourney: "आज अपनी दिव्य यात्रा शुरू करें",
       beginJourneyDesc: "लाखों भक्तों के साथ श्री राम की पवित्र विरासत को जानें",
       startExploring: "खोजना शुरू करें →",
+      todayInJourney: "🌅 आज राम की यात्रा में",
+      todayInJourneyDesc: "हर दिन एक नया पवित्र स्थान खोजें",
+      quizTeaser: "🎓 अपना रामायण ज्ञान परखें",
+      quizTeaserDesc: "प्रश्नोत्तरी में भाग लें और दिव्य बैज अर्जित करें",
+      quizTeaserCta: "प्रश्नोत्तरी शुरू करें →",
+      mapPreview: "🗺️ इंटरैक्टिव तीर्थ मानचित्र",
+      mapPreviewDesc: "भारत, नेपाल और श्रीलंका में 50+ पवित्र स्थानों को खोजें",
+      mapPreviewCta: "पूरा मानचित्र खोलें →",
+      quickTemples: "🏛️ त्वरित मंदिर पहुंच",
+    },
+    // Feature Cards
+    features: {
+      interactiveMap: "इंटरैक्टिव मानचित्र",
+      interactiveMapDesc: "50+ स्थानों को रंग-कोडित चरणों में खोजें",
+      offlineAccess: "ऑफ़लाइन एक्सेस",
+      offlineAccessDesc: "ऑफ़लाइन देखने के लिए मानचित्र डाउनलोड करें",
+      aiGuide: "AI गाइड",
+      aiGuideDesc: "प्रश्न पूछें, तुरंत उत्तर पाएं",
+      richContent: "समृद्ध सामग्री",
+      richContentDesc: "व्यापक रामायण शिक्षाएं",
+      itinerary: "यात्रा योजना बनाएं",
+      itineraryDesc: "कस्टम तीर्थ यात्रा की योजना बनाएं",
+      community: "समुदाय",
+      communityDesc: "लाखों भक्तों से जुड़ें",
+      livestreams: "लाइव स्ट्रीम",
+      livestreamsDesc: "मंदिर आरती लाइव देखें",
+      quizBadges: "प्रश्नोत्तरी और बैज",
+      quizBadgesDesc: "ज्ञान परखें, उपलब्धियां अर्जित करें",
+      travelBookings: "यात्रा बुकिंग",
+      travelBookingsDesc: "आसानी से फ़्लाइट, होटल, ट्रेन बुक करें",
+      souvenirStore: "स्मृति चिन्ह दुकान",
+      souvenirStoreDesc: "हस्तनिर्मित कला और रामायण उपहार ख़रीदें",
+      internationalRamayana: "अंतर्राष्ट्रीय रामायण",
+      internationalRamayanaDesc: "एशिया में रामायण खोजें",
+      digitalPooja: "डिजिटल पूजा बुकिंग",
+      digitalPoojaDesc: "ऑनलाइन मंदिर अनुष्ठान बुक करें",
+      offlineMode: "ऑफ़लाइन मोड",
+      offlineModeDesc: "ऑफ़लाइन उपयोग के लिए गाइड और मानचित्र डाउनलोड करें",
+      arvrWalk: "AR/VR राम के साथ चलें",
+      arvrWalkDesc: "रामायण का इमर्सिव 3D अनुभव",
+      templeStreams: "मंदिर लाइव स्ट्रीम",
+      templeStreamsDesc: "24/7 मंदिरों से लाइव दर्शन देखें",
+    },
+    // Share & Viral
+    share: {
+      shareTitle: "श्री राम की यात्रा खोजें",
+      sharePage: "यह पेज साझा करें",
+      whatsapp: "व्हाट्सएप पर साझा करें",
+      twitter: "ट्विटर पर साझा करें",
+      copyLink: "लिंक कॉपी करें",
+      copied: "लिंक कॉपी हो गया!",
+      continueJourney: "यात्रा जारी रखें",
+      continueJourneyDesc: "अगला पवित्र स्थान खोजें",
+      visitNext: "अगला देखें →",
+      quizBadgeTitle: "मैंने श्रीराम यात्रा पर एक बैज अर्जित किया!",
+      downloadBadge: "बैज डाउनलोड करें",
+      shareBadge: "बैज साझा करें",
+    },
+    // Why Choose
+    whyChoose: {
+      free: "100% मुफ़्त",
+      freeDesc: "सभी सुविधाएं बिना किसी शुल्क के उपलब्ध",
+      authentic: "प्रामाणिक सामग्री",
+      authenticDesc: "सत्यापित शास्त्र और ऐतिहासिक सटीकता",
+      global: "वैश्विक समुदाय",
+      globalDesc: "विश्वभर के भक्तों से जुड़ें",
+      userFriendly: "उपयोगकर्ता अनुकूल",
+      userFriendlyDesc: "सभी उम्र के लिए आसान नेविगेशन",
+      secure: "सुरक्षित",
+      secureDesc: "आपका डेटा सुरक्षित और निजी है",
+      comprehensive: "व्यापक",
+      comprehensiveDesc: "50+ स्थान, पूर्ण समयरेखा कवरेज",
+      available: "हमेशा उपलब्ध",
+      availableDesc: "किसी भी डिवाइस पर कभी भी, कहीं भी एक्सेस करें",
+      communityDriven: "समुदाय संचालित",
+      communityDrivenDesc: "कहानियां साझा करें और दूसरों से जुड़ें",
     },
     // Common
     common: {
@@ -126,6 +286,11 @@ export const translations = {
       download: "डाउनलोड करें",
       subscribe: "सदस्य बनें",
       viewMore: "और देखें",
+      fullscreen: "पूर्ण स्क्रीन",
+      exitFullscreen: "पूर्ण स्क्रीन बंद करें",
+      rotate: "घुमाने के लिए खींचें",
+      zoom: "ज़ूम के लिए स्क्रॉल करें",
+      webglUnsupported: "आपका ब्राउज़र 3D का समर्थन नहीं करता। इसके बजाय छवि दिखाई जा रही है।",
     },
   },
 };
@@ -137,11 +302,22 @@ export function getTranslation(
   language: Language
 ): string {
   const keys = path.split(".");
+  // Try requested language first
   let value: any = translations[language];
-
   for (const key of keys) {
     value = value?.[key];
   }
+  if (value && typeof value === "string") return value;
 
-  return value || path;
+  // Fallback to English
+  if (language !== "en") {
+    let fallback: any = translations["en"];
+    for (const key of keys) {
+      fallback = fallback?.[key];
+    }
+    if (fallback && typeof fallback === "string") return fallback;
+  }
+
+  // Final fallback: return path
+  return path;
 }

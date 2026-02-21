@@ -8,6 +8,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { ShareButtons } from "@/components/ShareButtons";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -29,7 +30,7 @@ export function Footer() {
             <p className="text-amber-100 text-sm mb-4">
               Explore the sacred journey of Shri Ram across Bharat
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-4">
               <a href="#" className="hover:text-white transition">
                 <Facebook className="w-5 h-5" />
               </a>
@@ -51,6 +52,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
+            <ShareButtons compact />
           </div>
 
           {/* Explore */}

@@ -95,7 +95,4 @@ const App = () => {
   );
 };
 
-const rootElement = document.getElementById("root");
-if (rootElement && !rootElement.hasChildNodes()) {
-  createRoot(rootElement).render(<App />);
-}
+export default App;

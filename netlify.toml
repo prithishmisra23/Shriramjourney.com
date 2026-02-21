@@ -13,3 +13,9 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/api/:splat"
+
+# SPA catch-all: serve index.html for all routes so React Router works
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

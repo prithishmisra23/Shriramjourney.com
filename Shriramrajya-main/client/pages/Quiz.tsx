@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trophy, Award, Star } from "lucide-react";
+import { Trophy, Award, Star, Download, MessageCircle } from "lucide-react";
+import { ShareButtons } from "@/components/ShareButtons";
 
 interface Question {
   id: number;
@@ -27,6 +28,14 @@ export default function QuizPage() {
   const [selected, setSelected] = useState<number | null>(null);
   const [quizComplete, setQuizComplete] = useState(false);
   const [earnedBadges, setEarnedBadges] = useState<string[]>([]);
+
+  // Load saved progress from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("quizBadges");
+    if (saved) {
+      try { setEarnedBadges(JSON.parse(saved)); } catch { }
+    }
+  }, []);
 
   const questions: Question[] = [
     {
@@ -154,7 +163,10 @@ export default function QuizPage() {
       setSelected(null);
       setAnswered(false);
     } else {
-      setEarnedBadges([...earnedBadges, "Hanuman Sena"]);
+      const finalBadges = [...earnedBadges, "Hanuman Sena"];
+      setEarnedBadges(finalBadges);
+      localStorage.setItem("quizBadges", JSON.stringify(finalBadges));
+      localStorage.setItem("quizHighScore", String(Math.max(score, parseInt(localStorage.getItem("quizHighScore") || "0"))));
       setQuizComplete(true);
     }
   };
@@ -242,11 +254,10 @@ export default function QuizPage() {
                 {badges.map((badge, idx) => (
                   <div
                     key={idx}
-                    className={`p-4 rounded-lg border-2 ${
-                      earnedBadges.includes(badge.name)
+                    className={`p-4 rounded-lg border-2 ${earnedBadges.includes(badge.name)
                         ? "border-amber-700 bg-gradient-to-br from-amber-50 to-orange-50"
                         : "border-gray-300 bg-gray-50 opacity-60"
-                    }`}
+                      }`}
                   >
                     <div className="text-4xl mb-2">{badge.icon}</div>
                     <p className="font-bold text-amber-950 mb-1">{badge.name}</p>
@@ -254,6 +265,21 @@ export default function QuizPage() {
                     <p className="text-xs text-gray-600">{badge.requirement}</p>
                   </div>
                 ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Share Your Result */}
+          <Card className="border-amber-200 mb-8">
+            <CardContent className="pt-6">
+              <div className="text-center mb-4">
+                <p className="font-bold text-amber-950 text-lg mb-2">📲 Share Your Result!</p>
+                <p className="text-sm text-amber-800">Challenge your friends to beat your score</p>
+              </div>
+              <div className="flex justify-center">
+                <ShareButtons
+                  title={`I scored ${score}/${questions.length} (${percentage.toFixed(0)}%) on the Ramayana Quiz at ShriramJourney.com! 🙏 Can you beat my score?`}
+                />
               </div>
             </CardContent>
           </Card>
@@ -312,29 +338,27 @@ export default function QuizPage() {
                 key={idx}
                 onClick={() => handleAnswer(idx)}
                 disabled={answered}
-                className={`w-full p-4 rounded-lg border-2 transition text-left font-medium ${
-                  !answered
+                className={`w-full p-4 rounded-lg border-2 transition text-left font-medium ${!answered
                     ? "border-amber-200 hover:border-amber-700 hover:bg-amber-50 cursor-pointer"
                     : selected === idx
-                    ? isCorrect
-                      ? "border-green-500 bg-green-50 text-green-900"
-                      : "border-red-500 bg-red-50 text-red-900"
-                    : idx === question.correct
-                    ? "border-green-500 bg-green-50 text-green-900"
-                    : "border-amber-200 bg-gray-50 text-gray-500 opacity-50"
-                }`}
+                      ? isCorrect
+                        ? "border-green-500 bg-green-50 text-green-900"
+                        : "border-red-500 bg-red-50 text-red-900"
+                      : idx === question.correct
+                        ? "border-green-500 bg-green-50 text-green-900"
+                        : "border-amber-200 bg-gray-50 text-gray-500 opacity-50"
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                      selected === idx
+                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${selected === idx
                         ? isCorrect
                           ? "border-green-500 bg-green-500"
                           : "border-red-500 bg-red-500"
                         : idx === question.correct && answered
-                        ? "border-green-500 bg-green-500"
-                        : "border-amber-400"
-                    }`}
+                          ? "border-green-500 bg-green-500"
+                          : "border-amber-400"
+                      }`}
                   >
                     {selected === idx && <Star className="w-4 h-4 text-white" />}
                     {idx === question.correct && answered && (
